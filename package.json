@@ -14,11 +14,17 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@fontsource/jost": "^5.0.1",
+    "@fontsource/luckiest-guy": "^5.0.1",
+    "@fontsource/nunito": "^5.0.1",
+    "@fontsource/poppins": "^5.0.1",
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/styled-components": "^5.1.26",
     "lint-staged": "^13.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.0.5",
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
