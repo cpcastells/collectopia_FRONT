@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./components/App/App";
 import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./store";
@@ -11,13 +10,15 @@ import "@fontsource/jost";
 import "@fontsource/poppins";
 import "@fontsource/nunito";
 import "@fontsource/luckiest-guy";
+import { RouterProvider } from "react-router";
+import appRouter from "./routers/appRouter/appRouter";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <GlobalStyle />
-        <App />
+        <RouterProvider router={appRouter} />
       </Provider>
     </ThemeProvider>
   </React.StrictMode>
