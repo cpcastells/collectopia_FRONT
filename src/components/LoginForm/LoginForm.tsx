@@ -1,6 +1,20 @@
+import { useState } from "react";
 import LoginFormStyled from "./LoginFormStyled";
+import { UserCredentialsStructure } from "../../types";
 
 const LoginForm = (): React.ReactElement => {
+  const initialCredentials = { username: "", password: "" };
+
+  const [userCredentials, setUserCredentials] =
+    useState<UserCredentialsStructure>(initialCredentials);
+
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserCredentials({
+      ...userCredentials,
+      [event.target.id]: event.target.value,
+    });
+  };
+
   return (
     <LoginFormStyled>
       <label htmlFor="username" className="form-label" hidden>
@@ -11,6 +25,8 @@ const LoginForm = (): React.ReactElement => {
         id="username"
         type="text"
         placeholder="Username"
+        value={userCredentials.username}
+        onChange={handleOnChange}
       />
       <label htmlFor="password" className="form-label" hidden>
         password
@@ -20,6 +36,8 @@ const LoginForm = (): React.ReactElement => {
         id="password"
         type="text"
         placeholder="Password"
+        value={userCredentials.password}
+        onChange={handleOnChange}
       />
       <button className="login-button" type="submit">
         Log in
