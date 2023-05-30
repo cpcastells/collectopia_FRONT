@@ -13,7 +13,7 @@ const LoginPage = (): React.ReactElement => {
           className="main-logo"
         />
         <h2>Track your Boardgames here!</h2>
-        <LoginForm />
+        <LoginForm submitForm={() => ({})} />
       </LoginPageStyled>
     </>
   );
