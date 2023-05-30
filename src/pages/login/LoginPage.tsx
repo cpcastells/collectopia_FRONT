@@ -1,3 +1,4 @@
+import LoginForm from "../../components/LoginForm/LoginForm";
 import LoginPageStyled from "./LoginPageStyled";
 
 const LoginPage = (): React.ReactElement => {
@@ -12,6 +13,7 @@ const LoginPage = (): React.ReactElement => {
           className="main-logo"
         />
         <h2>Track your Boardgames here!</h2>
+        <LoginForm />
       </LoginPageStyled>
     </>
   );
