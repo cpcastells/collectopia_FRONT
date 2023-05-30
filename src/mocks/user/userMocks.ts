@@ -22,3 +22,5 @@ export const newUserStateMock: userStateStructure = {
   token: "12der2t3d12d23ty",
   isLogged: true,
 };
+
+export const tokenMock = "2h3ghghj2g31212jhk2h3j123hk1h23";
