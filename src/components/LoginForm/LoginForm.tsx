@@ -17,7 +17,7 @@ const LoginForm = (): React.ReactElement => {
       </label>
       <input
         className="login-field"
-        id="username"
+        id="password"
         type="text"
         placeholder="Password"
       />
