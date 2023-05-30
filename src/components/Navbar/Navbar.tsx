@@ -6,7 +6,7 @@ const Navbar = (): React.ReactElement => {
     <NavbarStyled>
       <ul className="navbar-links">
         <li className="navbar-link">
-          <NavLink to="/collection">
+          <NavLink to="/collection" aria-label="boardgame collection">
             <img
               src="/images/home-icon.svg"
               alt="collection boardgames"
@@ -16,7 +16,7 @@ const Navbar = (): React.ReactElement => {
           </NavLink>
         </li>
         <li className="navbar-link">
-          <NavLink to="/add">
+          <NavLink to="/add" aria-label="add boardgame">
             <img
               src="/images/new-icon.svg"
               alt="add boardgame"
