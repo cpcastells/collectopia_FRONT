@@ -11,7 +11,7 @@ export const theme: DefaultTheme = {
     "light-green": "#eafffc",
     "medium-green": "#4d7b81",
     "dark-green": "#023f4a",
-    background: "f4fffd",
+    background: "#f4fffd",
     error: "#a7231a",
     yellow: "#f4e389",
   },
