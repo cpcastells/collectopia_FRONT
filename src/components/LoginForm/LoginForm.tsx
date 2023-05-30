@@ -2,7 +2,11 @@ import { useState } from "react";
 import LoginFormStyled from "./LoginFormStyled";
 import { UserCredentialsStructure } from "../../types";
 
-const LoginForm = (): React.ReactElement => {
+interface LoginFormProps {
+  submitForm: (userCredentials: UserCredentialsStructure) => void;
+}
+
+const LoginForm = ({ submitForm }: LoginFormProps): React.ReactElement => {
   const initialCredentials = { username: "", password: "" };
 
   const [userCredentials, setUserCredentials] =
@@ -15,8 +19,13 @@ const LoginForm = (): React.ReactElement => {
     });
   };
 
+  const handleOnSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    submitForm(userCredentials);
+  };
+
   return (
-    <LoginFormStyled>
+    <LoginFormStyled onSubmit={handleOnSubmit}>
       <label htmlFor="username" className="form-label" hidden>
         username
       </label>
