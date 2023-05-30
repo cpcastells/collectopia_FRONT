@@ -7,6 +7,10 @@ const NavbarStyled = styled.nav`
     display: flex;
     justify-content: space-between;
   }
+
+  .navbar-button {
+    background: none;
+  }
 `;
 
 export default NavbarStyled;
