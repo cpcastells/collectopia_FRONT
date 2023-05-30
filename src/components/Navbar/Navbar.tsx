@@ -8,7 +8,7 @@ const Navbar = (): React.ReactElement => {
         <li className="navbar-link">
           <NavLink to="/collection">
             <img
-              src="/images/Home.svg"
+              src="/images/home-icon.svg"
               alt="collection boardgames"
               width={48}
               height={48}
@@ -18,7 +18,7 @@ const Navbar = (): React.ReactElement => {
         <li className="navbar-link">
           <NavLink to="/add">
             <img
-              src="/images/New.svg"
+              src="/images/new-icon.svg"
               alt="add boardgame"
               width={48}
               height={48}
@@ -28,7 +28,7 @@ const Navbar = (): React.ReactElement => {
         <li className="navbar-link">
           <NavLink to="/login">
             <img
-              src="/images/Logout.svg"
+              src="/images/logout-icon.svg"
               alt="logout user"
               width={48}
               height={48}
