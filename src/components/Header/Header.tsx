@@ -1,5 +1,5 @@
 import Navbar from "../Navbar/Navbar";
-import HeaderStyled from "./Header.styled";
+import HeaderStyled from "./HeaderStyled";
 
 const Header = (): React.ReactElement => {
   return (
