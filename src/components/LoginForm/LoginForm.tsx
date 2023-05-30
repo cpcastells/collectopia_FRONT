@@ -24,6 +24,8 @@ const LoginForm = ({ submitForm }: LoginFormProps): React.ReactElement => {
     submitForm(userCredentials);
   };
 
+  const isDisabled = !userCredentials.username || !userCredentials.password;
+
   return (
     <LoginFormStyled onSubmit={handleOnSubmit}>
       <label htmlFor="username" className="form-label" hidden>
@@ -48,7 +50,7 @@ const LoginForm = ({ submitForm }: LoginFormProps): React.ReactElement => {
         value={userCredentials.password}
         onChange={handleOnChange}
       />
-      <button className="login-button" type="submit">
+      <button className="login-button" type="submit" disabled={isDisabled}>
         Log in
       </button>
     </LoginFormStyled>
