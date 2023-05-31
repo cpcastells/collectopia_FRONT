@@ -3,7 +3,7 @@ export interface UserCredentialsStructure {
   password: string;
 }
 
-export interface decodedTokenStructure {
+export interface DecodedTokenStructure {
   name: string;
   sub: string;
 }
