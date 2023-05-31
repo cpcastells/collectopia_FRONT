@@ -1,6 +1,7 @@
 import ContainerStyled from "../shared/ContainerStyled";
 import Header from "../Header/Header";
 import { Outlet, useLocation } from "react-router-dom";
+import paths from "../../routers/paths";
 
 const Layout = (): React.ReactElement => {
   const location = useLocation();
@@ -8,7 +9,7 @@ const Layout = (): React.ReactElement => {
   return (
     <>
       <ContainerStyled>
-        {location.pathname !== "/login" && <Header />}
+        {location.pathname !== `${paths.login}` && <Header />}
         <Outlet />
       </ContainerStyled>
     </>

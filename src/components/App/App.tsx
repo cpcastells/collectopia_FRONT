@@ -5,6 +5,7 @@ import { useAppDispatch } from "../../store";
 import { loginUserActionCreator } from "../../store/users/userSlice";
 import Layout from "../Layout/Layout";
 import { useNavigate } from "react-router-dom";
+import paths from "../../routers/paths";
 
 const App = (): JSX.Element => {
   const { getLocalStorageItem } = useLocalStorage();
@@ -18,7 +19,7 @@ const App = (): JSX.Element => {
       const userData = decodeUserDataToken(storagedToken);
       dispatch(loginUserActionCreator(userData));
     } else {
-      navigate("/login");
+      navigate(`${paths.login}`);
     }
   }, [decodeUserDataToken, dispatch, getLocalStorageItem, navigate]);
 
