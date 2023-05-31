@@ -5,16 +5,19 @@ import { useAppDispatch } from "../../store";
 import { loginUserActionCreator } from "../../store/users/userSlice";
 import { UserCredentialsStructure } from "../../types";
 import LoginPageStyled from "./LoginPageStyled";
+import useToken from "../../hooks/useToken/useToken";
 
 const LoginPage = (): React.ReactElement => {
   const { getUserToken } = useUser();
+  const { decodeUserDataToken } = useToken();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const submitForm = async (user: UserCredentialsStructure) => {
     const token = await getUserToken(user);
-    dispatch(loginUserActionCreator({ name: "", id: "", token }));
-    navigate("/collection", { replace: true });
+    const userData = decodeUserDataToken(token);
+    dispatch(loginUserActionCreator(userData));
+    navigate("/", { replace: true });
   };
 
   return (

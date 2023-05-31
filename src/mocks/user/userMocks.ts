@@ -2,7 +2,7 @@ import {
   userApiDataStructure,
   userStateStructure,
 } from "../../store/users/types";
-import { UserCredentialsStructure } from "../../types";
+import { DecodedTokenStructure, UserCredentialsStructure } from "../../types";
 
 export const initialUserStateMock: userStateStructure = {
   name: "",
@@ -29,4 +29,10 @@ export const userCredentialsMock: UserCredentialsStructure = {
   password: "holacaracola",
 };
 
-export const tokenMock = "2h3ghghj2g31212jhk2h3j123hk1h23";
+export const tokenMock =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzaDRqMmczaDQyajNoNGdoMjM0IiwibmFtZSI6IkpvaG4iLCJpYXQiOjE2ODQ1OTUxNDgsImV4cCI6MTY4NDk0MDc0OH0.Hp1jgDdTxGa5zwIGNeDd2qfyDF39WqzGNerPeXsh6N0";
+
+export const decodedTokenMock: DecodedTokenStructure = {
+  name: "John",
+  sub: "3h4j2g3h42j3h4gh234",
+};
