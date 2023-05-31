@@ -7,6 +7,7 @@ import { UserCredentialsStructure } from "../../types";
 import LoginPageStyled from "./LoginPageStyled";
 import useToken from "../../hooks/useToken/useToken";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
+import paths from "../../routers/paths";
 
 const LoginPage = (): React.ReactElement => {
   const { getUserToken } = useUser();
@@ -25,7 +26,7 @@ const LoginPage = (): React.ReactElement => {
 
       setLocalStorageItem("token", token);
 
-      navigate("/", { replace: true });
+      navigate(`${paths.root}`, { replace: true });
     }
   };
 
