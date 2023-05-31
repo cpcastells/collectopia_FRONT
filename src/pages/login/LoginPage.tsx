@@ -6,18 +6,27 @@ import { loginUserActionCreator } from "../../store/users/userSlice";
 import { UserCredentialsStructure } from "../../types";
 import LoginPageStyled from "./LoginPageStyled";
 import useToken from "../../hooks/useToken/useToken";
+import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 
 const LoginPage = (): React.ReactElement => {
   const { getUserToken } = useUser();
   const { decodeUserDataToken } = useToken();
+  const { setLocalStorageItem } = useLocalStorage();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const submitForm = async (user: UserCredentialsStructure) => {
     const token = await getUserToken(user);
-    const userData = decodeUserDataToken(token);
-    dispatch(loginUserActionCreator(userData));
-    navigate("/", { replace: true });
+
+    if (token) {
+      const userData = decodeUserDataToken(token);
+
+      dispatch(loginUserActionCreator(userData));
+
+      setLocalStorageItem("token", token);
+
+      navigate("/", { replace: true });
+    }
   };
 
   return (
