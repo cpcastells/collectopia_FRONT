@@ -1,6 +1,6 @@
 import CollectionPageStyled from "./CollectionPageStyled";
 
-const Collection = (): React.ReactElement => {
+const CollectionPage = (): React.ReactElement => {
   return (
     <>
       <CollectionPageStyled>
@@ -10,4 +10,4 @@ const Collection = (): React.ReactElement => {
   );
 };
 
-export default Collection;
+export default CollectionPage;
