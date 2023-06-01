@@ -3,6 +3,8 @@ import Layout from "./Layout";
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../styles/theme/theme";
+import { Provider } from "react-redux";
+import { store } from "../../store";
 
 describe("Given a Layout component", () => {
   describe("When it is rendered", () => {
@@ -19,9 +21,11 @@ describe("Given a Layout component", () => {
       const mockRouter = createMemoryRouter(routes);
 
       render(
-        <ThemeProvider theme={theme}>
-          <RouterProvider router={mockRouter} />
-        </ThemeProvider>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <RouterProvider router={mockRouter} />
+          </ThemeProvider>
+        </Provider>
       );
 
       const header = screen.getByRole("heading", {

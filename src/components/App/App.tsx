@@ -19,7 +19,7 @@ const App = (): JSX.Element => {
       const userData = decodeUserDataToken(storagedToken);
       dispatch(loginUserActionCreator(userData));
     } else {
-      navigate(`${paths.login}`);
+      navigate(paths.login);
     }
   }, [decodeUserDataToken, dispatch, getLocalStorageItem, navigate]);
 

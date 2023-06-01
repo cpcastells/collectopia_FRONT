@@ -6,12 +6,12 @@ import { LazyLoginPage } from "../lazyComponents/lazyComponents";
 
 const routes: RouteObject[] = [
   {
-    path: `${paths.root}`,
+    path: paths.root,
     element: <App />,
     children: [
-      { index: true, element: <Navigate to={`${paths.login}`} replace /> },
+      { index: true, element: <Navigate to={paths.login} replace /> },
       {
-        path: `${paths.login}`,
+        path: paths.login,
         element: (
           <Suspense>
             <LazyLoginPage />
