@@ -18,6 +18,7 @@ const App = (): JSX.Element => {
     if (storagedToken) {
       const userData = decodeUserDataToken(storagedToken);
       dispatch(loginUserActionCreator(userData));
+      navigate(paths.collection);
     } else {
       navigate(paths.login);
     }
