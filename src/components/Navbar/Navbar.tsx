@@ -1,7 +1,15 @@
 import { NavLink } from "react-router-dom";
 import NavbarStyled from "./NavbarStyled";
 
-const Navbar = (): React.ReactElement => {
+interface NavbarProps {
+  onLogoutUser: () => void;
+}
+
+const Navbar = ({ onLogoutUser }: NavbarProps): React.ReactElement => {
+  const handleOnClick = (): void => {
+    onLogoutUser();
+  };
+
   return (
     <NavbarStyled>
       <ul className="navbar-links">
@@ -26,7 +34,7 @@ const Navbar = (): React.ReactElement => {
           </NavLink>
         </li>
         <li>
-          <button className="navbar-button">
+          <button className="navbar-button" onClick={handleOnClick}>
             <img
               src="/images/logout-icon.svg"
               alt="logout user"

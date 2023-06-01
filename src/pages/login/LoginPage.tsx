@@ -26,7 +26,7 @@ const LoginPage = (): React.ReactElement => {
 
       setLocalStorageItem("token", token);
 
-      navigate(`${paths.root}`, { replace: true });
+      navigate(paths.root, { replace: true });
     }
   };
 
