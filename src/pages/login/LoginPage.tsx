@@ -8,6 +8,7 @@ import LoginPageStyled from "./LoginPageStyled";
 import useToken from "../../hooks/useToken/useToken";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 import paths from "../../routers/paths";
+import { userApiDataStructure } from "../../store/users/types";
 
 const LoginPage = (): React.ReactElement => {
   const { getUserToken } = useUser();
@@ -22,7 +23,9 @@ const LoginPage = (): React.ReactElement => {
     if (token) {
       const userData = decodeUserDataToken(token);
 
-      dispatch(loginUserActionCreator(userData));
+      dispatch(
+        loginUserActionCreator({ ...userData, token } as userApiDataStructure)
+      );
 
       setLocalStorageItem("token", token);
 

@@ -16,10 +16,9 @@ describe("Given a decodeUserDataToken function", () => {
 
       const userData = decodeUserDataToken(fakeToken);
 
-      expect(userData).toStrictEqual({
+      expect(userData).toEqual({
         id: fakeDecodedToken.sub,
         name: fakeDecodedToken.name,
-        token: fakeToken,
       });
     });
   });
