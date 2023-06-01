@@ -6,6 +6,7 @@ import { loginUserActionCreator } from "../../store/users/userSlice";
 import Layout from "../Layout/Layout";
 import { useNavigate } from "react-router-dom";
 import paths from "../../routers/paths";
+import { userApiDataStructure } from "../../store/users/types";
 
 const App = (): JSX.Element => {
   const { getLocalStorageItem } = useLocalStorage();
@@ -17,7 +18,12 @@ const App = (): JSX.Element => {
     const storagedToken = getLocalStorageItem("token");
     if (storagedToken) {
       const userData = decodeUserDataToken(storagedToken);
-      dispatch(loginUserActionCreator(userData));
+      dispatch(
+        loginUserActionCreator({
+          ...userData,
+          storagedToken,
+        } as userApiDataStructure)
+      );
       navigate(paths.collection);
     } else {
       navigate(paths.login);

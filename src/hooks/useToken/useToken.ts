@@ -5,12 +5,11 @@ import { useCallback } from "react";
 
 const useToken = () => {
   const decodeUserDataToken = useCallback(
-    (token: string): userApiDataStructure => {
-      const decodedTokenData: DecodedTokenStructure = jwtDecode(token);
+    (token: string): Partial<userApiDataStructure> => {
+      const decodedTokenData: Partial<DecodedTokenStructure> = jwtDecode(token);
       const userData = {
         name: decodedTokenData.name,
         id: decodedTokenData.sub,
-        token,
       };
 
       return userData;
