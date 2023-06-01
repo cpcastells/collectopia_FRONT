@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import { store } from "../../store";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../styles/theme/theme";
+import CollectionPage from "../collection/CollectionPage";
 
 describe("Given a LoginPage page", () => {
   describe("When it is rendered", () => {
@@ -30,7 +31,7 @@ describe("Given a LoginPage page", () => {
     test("Then should redirect to CollectionPage page", async () => {
       const routes: RouteObject[] = [
         { path: paths.root, element: <LoginPage /> },
-        { path: paths.collection, element: "/collection" },
+        { path: paths.collection, element: <CollectionPage /> },
       ];
 
       const routerTest = createMemoryRouter(routes);
