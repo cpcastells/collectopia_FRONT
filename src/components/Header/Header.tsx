@@ -12,7 +12,7 @@ const Header = (): React.ReactElement => {
   const navigate = useNavigate();
 
   const onLogoutUser = () => {
-    dispatch(logoutUserActionCreator);
+    dispatch(logoutUserActionCreator());
     removeLocalStorageItem("token");
     navigate(paths.login);
   };
