@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { BoardgameStructure } from "./types";
 
-const initialBoardgamesState: BoardgameStructure[] = [];
+export const initialBoardgamesState: BoardgameStructure[] = [];
 
 const boardgameSlice = createSlice({
   name: "boardgame",
@@ -16,4 +16,4 @@ const boardgameSlice = createSlice({
 
 export const { loadBoardgames: loadBoardgamesActionCreator } =
   boardgameSlice.actions;
-export const boardGamesReducer = boardgameSlice.reducer;
+export const boardgamesReducer = boardgameSlice.reducer;

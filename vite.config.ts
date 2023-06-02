@@ -24,6 +24,7 @@ export default defineConfig({
         "src/routers/appRouter/appRouter.tsx",
         "src/store/index.ts",
         "src/routers/lazyComponents/lazyComponents.ts",
+        "src/components/App/App.tsx",
       ],
     },
   },
