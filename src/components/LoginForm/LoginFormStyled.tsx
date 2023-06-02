@@ -16,7 +16,7 @@ const LoginFormStyled = styled.form`
       font-size: 1rem;
       background: none;
       border: none;
-      border-bottom: 1.3px solid ${(props) => props.theme.colors["dark-green"]};
+      border-bottom: 2px solid ${(props) => props.theme.colors["medium-green"]};
       width: 100%;
 
       &::placeholder {

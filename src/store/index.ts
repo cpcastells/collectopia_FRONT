@@ -3,9 +3,11 @@ import { combineReducers } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { userReducer } from "./users/userSlice";
+import { boardgamesReducer } from "./boardgames/boardgameSlice";
 
 const rootReducer = combineReducers({
   userStore: userReducer,
+  boardgameStore: boardgamesReducer,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
