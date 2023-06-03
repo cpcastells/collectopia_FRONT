@@ -10,7 +10,7 @@ const CollectionPage = (): React.ReactElement => {
 
   useEffect(() => {
     dispatch(loadBoardgamesActionCreator(boardGamesMock));
-  });
+  }, [dispatch]);
 
   return (
     <>

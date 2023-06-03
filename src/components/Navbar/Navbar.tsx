@@ -1,13 +1,20 @@
+import { useNavigate } from "react-router-dom";
+import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
+import { useAppDispatch } from "../../store";
+import { logoutUserActionCreator } from "../../store/users/userSlice";
 import { NavLink } from "react-router-dom";
 import NavbarStyled from "./NavbarStyled";
+import paths from "../../routers/paths";
 
-interface NavbarProps {
-  onLogoutUser: () => void;
-}
+const Navbar = (): React.ReactElement => {
+  const dispatch = useAppDispatch();
+  const { removeLocalStorageItem } = useLocalStorage();
+  const navigate = useNavigate();
 
-const Navbar = ({ onLogoutUser }: NavbarProps): React.ReactElement => {
-  const handleOnClick = (): void => {
-    onLogoutUser();
+  const onLogoutUser = () => {
+    dispatch(logoutUserActionCreator());
+    removeLocalStorageItem("token");
+    navigate(paths.login);
   };
 
   return (
@@ -34,7 +41,7 @@ const Navbar = ({ onLogoutUser }: NavbarProps): React.ReactElement => {
           </NavLink>
         </li>
         <li>
-          <button className="navbar-button" onClick={handleOnClick}>
+          <button className="navbar-button" onClick={onLogoutUser}>
             <img
               src="/images/logout-icon.svg"
               alt="logout user"
