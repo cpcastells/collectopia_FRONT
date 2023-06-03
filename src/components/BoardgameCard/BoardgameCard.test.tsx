@@ -1,7 +1,8 @@
 import { screen } from "@testing-library/react";
-import renderWithProviders from "../../utils/testUtils";
+import { renderWithProviders } from "../../utils/testUtils";
 import BoardgameCard from "./BoardgameCard";
 import { boardGamesMock } from "../../mocks/boardgames/boardgamesMocks";
+import { initialUserStateMock } from "../../mocks/user/userMocks";
 
 describe("Given a BoardgameCard component", () => {
   describe("When it is rendered", () => {
@@ -9,7 +10,9 @@ describe("Given a BoardgameCard component", () => {
     const mockBoardgame = boardGamesMock[0];
 
     test("Then it should show a heading with the title 'Rising Sun'", () => {
-      renderWithProviders(<BoardgameCard boardgame={mockBoardgame} />);
+      renderWithProviders(<BoardgameCard boardgame={mockBoardgame} />, {
+        userStore: initialUserStateMock,
+      });
 
       const heading = screen.getByRole("heading", {
         level: 3,
