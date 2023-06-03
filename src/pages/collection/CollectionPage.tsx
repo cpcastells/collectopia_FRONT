@@ -18,12 +18,10 @@ const CollectionPage = (): React.ReactElement => {
   }, [dispatch, getBoardgames]);
 
   return (
-    <>
-      <CollectionPageStyled>
-        <h2 className="collection-title">My collection</h2>
-        <BoardgamesList boardgames={boardgames} />
-      </CollectionPageStyled>
-    </>
+    <CollectionPageStyled>
+      <h2 className="collection-title">My collection</h2>
+      <BoardgamesList boardgames={boardgames} />
+    </CollectionPageStyled>
   );
 };
 
