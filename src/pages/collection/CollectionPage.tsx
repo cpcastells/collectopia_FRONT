@@ -3,7 +3,7 @@ import { useAppDispatch } from "../../store";
 import CollectionPageStyled from "./CollectionPageStyled.js";
 import { loadBoardgamesActionCreator } from "../../store/boardgames/boardgameSlice.js";
 import { boardGamesMock } from "../../mocks/boardgames/boardgamesMocks.js";
-import BoardgamesList from "../../components/CollectionList/BoardgamesList.js";
+import BoardgamesList from "../../components/BoardgamesList/BoardgamesList.js";
 
 const CollectionPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
