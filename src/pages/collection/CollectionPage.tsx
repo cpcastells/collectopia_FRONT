@@ -1,22 +1,27 @@
 import { useEffect } from "react";
-import { useAppDispatch } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import CollectionPageStyled from "./CollectionPageStyled.js";
 import { loadBoardgamesActionCreator } from "../../store/boardgames/boardgameSlice.js";
-import { boardGamesMock } from "../../mocks/boardgames/boardgamesMocks.js";
 import BoardgamesList from "../../components/BoardgamesList/BoardgamesList.js";
+import useBoardgames from "../../hooks/useBoardgames/useBoardgames.js";
 
 const CollectionPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
+  const boardgames = useAppSelector((state) => state.boardgameStore);
+  const { getBoardgames } = useBoardgames();
 
   useEffect(() => {
-    dispatch(loadBoardgamesActionCreator(boardGamesMock));
-  }, [dispatch]);
+    (async () => {
+      const boardgames = await getBoardgames();
+      dispatch(loadBoardgamesActionCreator(boardgames));
+    })();
+  }, [dispatch, getBoardgames]);
 
   return (
     <>
       <CollectionPageStyled>
         <h2 className="collection-title">My collection</h2>
-        <BoardgamesList />
+        <BoardgamesList boardgames={boardgames} />
       </CollectionPageStyled>
     </>
   );

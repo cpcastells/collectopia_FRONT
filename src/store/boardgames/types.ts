@@ -15,3 +15,7 @@ export interface BoardgameStructure {
   user: string;
   id: string;
 }
+
+export interface BoardgamesApiResponse {
+  boardgames: BoardgameStructure[];
+}

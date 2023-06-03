@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import { vitest } from "vitest";
 import userEvent from "@testing-library/user-event";
-import renderWithProviders from "../../utils/testUtils";
+import { renderWithProviders } from "../../utils/testUtils";
 import LoginForm from "./LoginForm";
 
 describe("Given a LoginForm component", () => {

@@ -5,8 +5,9 @@ import { render } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../styles/theme/theme";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
+import { PropsWithChildren } from "react";
 
-const renderWithProviders = (
+export const renderWithProviders = (
   ui: React.ReactElement,
   preloadedState?: PreloadedState<RootState>
 ) => {
@@ -34,4 +35,8 @@ const renderWithProviders = (
   render(ui, { wrapper: Wrapper });
 };
 
-export default renderWithProviders;
+export const wrapper = ({
+  children,
+}: PropsWithChildren): React.ReactElement => {
+  return <Provider store={store}>{children}</Provider>;
+};
