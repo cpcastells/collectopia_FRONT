@@ -5,6 +5,8 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "../../styles/theme/theme";
 import { Provider } from "react-redux";
 import { store } from "../../store";
+import { renderWithProviders } from "../../utils/testUtils";
+import { showStateStructureMock } from "../../mocks/ui/uiMocks";
 
 describe("Given a Layout component", () => {
   describe("When it is rendered", () => {
@@ -34,6 +36,18 @@ describe("Given a Layout component", () => {
       });
 
       expect(header).toBeInTheDocument();
+    });
+  });
+
+  describe("When a page is loading", () => {
+    test("Then it should renders the loader", () => {
+      const expectedLabelText = "loading spinner";
+
+      renderWithProviders(<Layout />, { uiStore: showStateStructureMock });
+
+      const loader = screen.getByLabelText(expectedLabelText);
+
+      expect(loader).toBeInTheDocument();
     });
   });
 });
