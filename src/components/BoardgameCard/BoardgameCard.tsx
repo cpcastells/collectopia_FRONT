@@ -1,4 +1,5 @@
 import { BoardgameStructure } from "../../store/boardgames/types";
+import Button from "../Button/Button";
 import BoardgameCardStyled from "./BoardgameCardStyled";
 
 interface BoardgameCardProps {
@@ -36,8 +37,8 @@ const BoardgameCard = ({
         </div>
       </div>
       <div className="card__buttons-container">
-        <button className="card__details-button">Details</button>
-        <button className="card__delete-button">Delete</button>
+        <Button className={"card__details-button"} text={"Details"} />
+        <Button className={"card__delete-button"} text={"Delete"} />
       </div>
     </BoardgameCardStyled>
   );
