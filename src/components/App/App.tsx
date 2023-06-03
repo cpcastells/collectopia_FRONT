@@ -21,7 +21,7 @@ const App = (): JSX.Element => {
       dispatch(
         loginUserActionCreator({
           ...userData,
-          storagedToken,
+          token: storagedToken,
         } as userApiDataStructure)
       );
       navigate(paths.collection);

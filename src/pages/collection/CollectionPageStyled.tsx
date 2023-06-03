@@ -4,7 +4,9 @@ const CollectionPageStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 26px 26px 26px;
   gap: 26px;
+  width: 100%;
 
   .collection-title {
     font-size: 1.375rem;
