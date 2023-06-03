@@ -1,6 +1,6 @@
 import { uiStateStructure } from "../../store/ui/types";
 
-export const uiStateStructureMock: uiStateStructure = {
+export const showStateStructureMock: uiStateStructure = {
   isLoading: true,
   modalInfo: {
     firstMessage: "",
@@ -10,7 +10,7 @@ export const uiStateStructureMock: uiStateStructure = {
   },
 };
 
-export const previousStateStructureMock: uiStateStructure = {
+export const hideStateStructureMock: uiStateStructure = {
   isLoading: false,
   modalInfo: {
     firstMessage: "",
