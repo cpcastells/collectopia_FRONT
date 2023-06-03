@@ -42,6 +42,7 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
     padding-left: 0;
     margin-bottom: 0;
+    margin-top: 0;
   }
 
   button {
