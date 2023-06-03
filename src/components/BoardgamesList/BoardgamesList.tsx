@@ -1,11 +1,17 @@
-import { boardGamesMock } from "../../mocks/boardgames/boardgamesMocks";
+import { BoardgameStructure } from "../../store/boardgames/types";
 import BoardgameCard from "../BoardgameCard/BoardgameCard";
 import BoardgamesListStyled from "./BoardgameListStyled";
 
-const BoardgamesList = (): React.ReactElement => {
+interface BoardgamesListProps {
+  boardgames: BoardgameStructure[];
+}
+
+const BoardgamesList = ({
+  boardgames,
+}: BoardgamesListProps): React.ReactElement => {
   return (
     <BoardgamesListStyled>
-      {boardGamesMock.map((boardgame) => (
+      {boardgames.map((boardgame) => (
         <li key={boardgame.id} className="card">
           <BoardgameCard boardgame={boardgame} />
         </li>
