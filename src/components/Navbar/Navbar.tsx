@@ -5,6 +5,9 @@ import { logoutUserActionCreator } from "../../store/users/userSlice";
 import { NavLink } from "react-router-dom";
 import NavbarStyled from "./NavbarStyled";
 import paths from "../../routers/paths";
+import newIcon from "../../assets/icons/new-icon.svg";
+import homeIcon from "../../assets/icons/home-icon.svg";
+import logoutIcon from "../../assets/icons/logout-icon.svg";
 
 const Navbar = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -23,7 +26,7 @@ const Navbar = (): React.ReactElement => {
         <li>
           <NavLink to="/collection" aria-label="boardgame collection">
             <img
-              src="/images/home-icon.svg"
+              src={homeIcon}
               alt="collection boardgames"
               width={48}
               height={48}
@@ -32,22 +35,12 @@ const Navbar = (): React.ReactElement => {
         </li>
         <li>
           <NavLink to="/add" aria-label="add boardgame">
-            <img
-              src="/images/new-icon.svg"
-              alt="add boardgame"
-              width={48}
-              height={48}
-            />
+            <img src={newIcon} alt="add boardgame" width={48} height={48} />
           </NavLink>
         </li>
         <li>
           <button className="navbar-button" onClick={onLogoutUser}>
-            <img
-              src="/images/logout-icon.svg"
-              alt="logout user"
-              width={48}
-              height={48}
-            />
+            <img src={logoutIcon} alt="logout user" width={48} height={48} />
           </button>
         </li>
       </ul>

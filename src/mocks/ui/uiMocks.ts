@@ -6,7 +6,7 @@ export const showStateStructureMock: uiStateStructure = {
     firstMessage: "",
     title: "",
     isError: false,
-    isSucces: false,
+    isSuccess: false,
   },
 };
 
@@ -16,6 +16,6 @@ export const hideStateStructureMock: uiStateStructure = {
     firstMessage: "",
     title: "",
     isError: false,
-    isSucces: false,
+    isSuccess: false,
   },
 };
