@@ -17,31 +17,39 @@ const Feedback = (): React.ReactElement => {
     useAppSelector((state) => state.uiStore.modalInfo);
 
   let IconComponent!: React.FunctionComponent<SVGProps<SVGSVGElement>>;
-
+  let ariaText = "";
   switch (icon) {
     case "delete success":
       IconComponent = SuccessDelete;
+      ariaText = "success delete";
       break;
     case "delete failed":
       IconComponent = FailDelete;
+      ariaText = "failed delete";
       break;
     case "edit success":
       IconComponent = SuccessEdit;
+      ariaText = "success edit";
       break;
     case "edit failed":
       IconComponent = FailEdit;
+      ariaText = "failed edit";
       break;
     case "add success":
       IconComponent = SuccessAdd;
+      ariaText = "success add";
       break;
     case "add failed":
       IconComponent = FailedAdd;
+      ariaText = "failed add";
       break;
     case "credentials success":
       IconComponent = SuccessCredentials;
+      ariaText = "success credentials";
       break;
     case "credentials failed":
       IconComponent = FailedCredentials;
+      ariaText = "failed credentials";
   }
 
   return (
@@ -53,7 +61,9 @@ const Feedback = (): React.ReactElement => {
         </button>
         <div className="modal__info">
           <h4 className="modal__title">{title}</h4>
-          {icon && <IconComponent className="modal__icon" />}
+          {icon && (
+            <IconComponent className="modal__icon" aria-label={ariaText} />
+          )}
           <span className="modal__first-message">{firstMessage}</span>
           <span className={`modal__second-message ${isError && "error"}`}>
             {secondMessage}
