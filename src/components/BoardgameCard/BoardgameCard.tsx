@@ -24,17 +24,17 @@ const BoardgameCard = ({
         <span className="card__category">{category}</span>
       </div>
       <div className="card__image">
-        <img src={image} alt={title}></img>
+        <img src={image} alt={title} width={274} height={274}></img>
       </div>
       <div className="card__info">
         <div className="card__players">
-          <img src={peopleIcon} alt="players icon"></img>
+          <img src={peopleIcon} alt="players icon" width={35} height={37}></img>
           <span>
             {min}-{max}
           </span>
         </div>
         <div className="card__playtime">
-          <img src={timeIcon} alt="time icon"></img>
+          <img src={timeIcon} alt="time icon" width={29} height={41}></img>
           <span>{duration} min</span>
         </div>
       </div>
