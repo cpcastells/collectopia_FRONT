@@ -5,9 +5,11 @@ const initialUiState: uiStateStructure = {
   isLoading: false,
   modalInfo: {
     isError: false,
-    isSucces: false,
-    firstMessage: "",
+    isSuccess: false,
     title: "",
+    firstMessage: "",
+    secondMessage: "",
+    icon: "",
   },
 };
 
