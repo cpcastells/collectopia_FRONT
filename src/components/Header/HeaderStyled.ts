@@ -14,6 +14,7 @@ const HeaderStyled = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
 
   .header-title {
     font-family: ${(props) => props.theme.fonts.form};
