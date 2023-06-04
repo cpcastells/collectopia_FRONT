@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { store } from "../../store";
 import { renderWithProviders } from "../../utils/testUtils";
 import { showStateStructureMock } from "../../mocks/ui/uiMocks";
+import { createStateStructureMock } from "../../mocks/factories/ui/uiStateFactory";
 
 describe("Given a Layout component", () => {
   describe("When it is rendered", () => {
@@ -48,6 +49,42 @@ describe("Given a Layout component", () => {
       const loader = screen.getByLabelText(expectedLabelText);
 
       expect(loader).toBeInTheDocument();
+    });
+  });
+
+  describe("When it receives isSuccess from the state", () => {
+    test("Then it should renders the feedback component", () => {
+      const expectedButtonAltText = "exit button";
+      const mockState = createStateStructureMock({
+        modalInfo: {
+          isError: false,
+          isSuccess: true,
+        },
+      });
+
+      renderWithProviders(<Layout />, { uiStore: mockState });
+
+      const feedback = screen.getByAltText(expectedButtonAltText);
+
+      expect(feedback).toBeInTheDocument();
+    });
+  });
+
+  describe("When it receives isError from the state", () => {
+    test("Then it should renders the feedback component", () => {
+      const expectedButtonAltText = "exit button";
+      const mockState = createStateStructureMock({
+        modalInfo: {
+          isError: true,
+          isSuccess: false,
+        },
+      });
+
+      renderWithProviders(<Layout />, { uiStore: mockState });
+
+      const feedback = screen.getByAltText(expectedButtonAltText);
+
+      expect(feedback).toBeInTheDocument();
     });
   });
 });
