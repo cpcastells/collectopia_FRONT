@@ -1,11 +1,11 @@
 export interface uiStateStructure {
-  isLoading: boolean;
+  isLoading?: boolean;
   modalInfo: {
     isError: boolean;
-    isSucces: boolean;
-    title: string;
-    firstMessage: string;
+    isSuccess: boolean;
+    title?: string;
+    firstMessage?: string;
     secondMessage?: string;
-    icon?: React.ReactElement;
+    icon?: string;
   };
 }

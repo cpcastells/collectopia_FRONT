@@ -4,19 +4,23 @@ import { Outlet, useLocation } from "react-router-dom";
 import paths from "../../routers/paths";
 import { useAppSelector } from "../../store";
 import Loader from "../Loader/Loader";
+import Feedback from "../Feedback/Feedback";
 
 const Layout = (): React.ReactElement => {
   const location = useLocation();
-  const { isLoading } = useAppSelector((state) => state.uiStore);
+  const {
+    isLoading,
+    modalInfo: { isSuccess, isError },
+  } = useAppSelector((state) => state.uiStore);
 
   return (
-    <>
-      <ContainerStyled>
-        {isLoading && <Loader />}
-        {location.pathname !== `${paths.login}` && <Header />}
-        <Outlet />
-      </ContainerStyled>
-    </>
+    <ContainerStyled>
+      {isLoading && <Loader />}
+      {isSuccess && <Feedback />}
+      {isError && <Feedback />}
+      {location.pathname !== `${paths.login}` && <Header />}
+      <Outlet />
+    </ContainerStyled>
   );
 };
 

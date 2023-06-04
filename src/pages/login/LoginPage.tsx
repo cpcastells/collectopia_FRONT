@@ -9,6 +9,7 @@ import useToken from "../../hooks/useToken/useToken";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 import paths from "../../routers/paths";
 import { userApiDataStructure } from "../../store/users/types";
+import mainLogo from "../../assets/icons/main-logo.svg";
 
 const LoginPage = (): React.ReactElement => {
   const { getUserToken } = useUser();
@@ -36,7 +37,7 @@ const LoginPage = (): React.ReactElement => {
   return (
     <LoginPageStyled>
       <img
-        src="/images/main-logo.svg"
+        src={mainLogo}
         alt="collectopia logo"
         width={220}
         height={120}

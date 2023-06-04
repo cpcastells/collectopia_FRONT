@@ -1,6 +1,8 @@
 import { BoardgameStructure } from "../../store/boardgames/types";
 import Button from "../Button/Button";
 import BoardgameCardStyled from "./BoardgameCardStyled";
+import peopleIcon from "../../assets/icons/people-icon.svg";
+import timeIcon from "../../assets/icons/time-icon.svg";
 
 interface BoardgameCardProps {
   boardgame: BoardgameStructure;
@@ -26,13 +28,13 @@ const BoardgameCard = ({
       </div>
       <div className="card__info">
         <div className="card__players">
-          <img src="/images/people-icon.svg" alt="players icon"></img>
+          <img src={peopleIcon} alt="players icon"></img>
           <span>
             {min}-{max}
           </span>
         </div>
         <div className="card__playtime">
-          <img src="/images/time-icon.svg" alt="time icon"></img>
+          <img src={timeIcon} alt="time icon"></img>
           <span>{duration} min</span>
         </div>
       </div>
