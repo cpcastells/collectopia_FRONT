@@ -6,7 +6,7 @@ import timeIcon from "../../assets/icons/time-icon.svg";
 
 interface BoardgameCardProps {
   boardgame: BoardgameStructure;
-  isLazy: "lazy" | "eager";
+  isLazy?: "lazy" | "eager";
 }
 
 const BoardgameCard = ({
