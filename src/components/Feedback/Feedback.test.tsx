@@ -2,6 +2,7 @@ import { screen } from "@testing-library/react";
 import { createStateStructureMock } from "../../mocks/factories/ui/uiStateFactory";
 import { renderWithProviders } from "../../utils/testUtils";
 import Feedback from "./Feedback";
+import userEvent from "@testing-library/user-event";
 
 const testCases = [
   { icon: "delete success", expectedText: "success delete" },
@@ -69,6 +70,31 @@ describe("Given a Feedback component", () => {
       const image = screen.getByAltText(expectedButtonAltText);
 
       expect(image).toBeInTheDocument();
+    });
+  });
+
+  describe("When it is rendered and the user clicks on the button", () => {
+    test("Then it shoud dissapear", async () => {
+      const expectedAltTextButton = "exit button";
+
+      renderWithProviders(<Feedback />, {
+        uiStore: {
+          isLoading: false,
+          modalData: {
+            title: "",
+            firstMessage: "",
+            secondMessage: "",
+            isError: true,
+            isSuccess: false,
+            icon: "",
+          },
+        },
+      });
+
+      const button = screen.getByAltText(expectedAltTextButton);
+      await userEvent.click(button);
+
+      expect(button).not.toBeInTheDocument();
     });
   });
 });
