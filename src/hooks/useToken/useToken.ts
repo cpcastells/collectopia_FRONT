@@ -1,11 +1,11 @@
 import jwtDecode from "jwt-decode";
-import { userApiDataStructure } from "../../store/users/types";
+import { UserApiDataStructure } from "../../store/users/types";
 import { DecodedTokenStructure } from "../../types";
 import { useCallback } from "react";
 
 const useToken = () => {
   const decodeUserDataToken = useCallback(
-    (token: string): Partial<userApiDataStructure> => {
+    (token: string): Partial<UserApiDataStructure> => {
       const decodedTokenData: Partial<DecodedTokenStructure> = jwtDecode(token);
       const userData = {
         name: decodedTokenData.name,

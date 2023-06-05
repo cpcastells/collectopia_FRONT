@@ -1,8 +1,8 @@
-import { uiStateStructure } from "../../store/ui/types";
+import { ModalDataStructure, UiStateStructure } from "../../store/ui/types";
 
-export const showStateStructureMock: uiStateStructure = {
+export const showStateStructureMock: UiStateStructure = {
   isLoading: true,
-  modalInfo: {
+  modalData: {
     firstMessage: "",
     title: "",
     isError: false,
@@ -10,12 +10,33 @@ export const showStateStructureMock: uiStateStructure = {
   },
 };
 
-export const hideStateStructureMock: uiStateStructure = {
+export const hideStateStructureMock: UiStateStructure = {
   isLoading: false,
-  modalInfo: {
+  modalData: {
     firstMessage: "",
     title: "",
     isError: false,
     isSuccess: false,
   },
+};
+
+export const initialUiStateMock: UiStateStructure = {
+  isLoading: false,
+  modalData: {
+    title: "",
+    firstMessage: "",
+    secondMessage: "",
+    isError: true,
+    isSuccess: false,
+    icon: "",
+  },
+};
+
+export const modalFeedbackMock: ModalDataStructure = {
+  title: "New Title",
+  firstMessage: "First Message",
+  secondMessage: "Second Message",
+  isError: true,
+  isSuccess: false,
+  icon: "icon",
 };

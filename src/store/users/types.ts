@@ -1,9 +1,9 @@
-export interface userApiDataStructure {
+export interface UserApiDataStructure {
   name: string;
   id: string;
   token: string;
 }
 
-export interface userStateStructure extends userApiDataStructure {
+export interface UserStateStructure extends UserApiDataStructure {
   isLogged: boolean;
 }

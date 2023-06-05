@@ -1,23 +1,23 @@
 import {
-  userApiDataStructure,
-  userStateStructure,
+  UserApiDataStructure,
+  UserStateStructure,
 } from "../../store/users/types";
 import { DecodedTokenStructure, UserCredentialsStructure } from "../../types";
 
-export const initialUserStateMock: userStateStructure = {
+export const initialUserStateMock: UserStateStructure = {
   name: "",
   id: "",
   token: "",
   isLogged: false,
 };
 
-export const userDataApiMock: userApiDataStructure = {
+export const userDataApiMock: UserApiDataStructure = {
   name: "jonny",
   id: "holacaracola",
   token: "12der2t3d12d23ty",
 };
 
-export const newUserStateMock: userStateStructure = {
+export const newUserStateMock: UserStateStructure = {
   name: "jonny",
   id: "holacaracola",
   token: "12der2t3d12d23ty",

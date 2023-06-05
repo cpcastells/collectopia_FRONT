@@ -56,7 +56,7 @@ describe("Given a Layout component", () => {
     test("Then it should renders the feedback component", () => {
       const expectedButtonAltText = "exit button";
       const mockState = createStateStructureMock({
-        modalInfo: {
+        modalData: {
           isError: false,
           isSuccess: true,
         },
@@ -74,7 +74,7 @@ describe("Given a Layout component", () => {
     test("Then it should renders the feedback component", () => {
       const expectedButtonAltText = "exit button";
       const mockState = createStateStructureMock({
-        modalInfo: {
+        modalData: {
           isError: true,
           isSuccess: false,
         },

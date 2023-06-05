@@ -6,7 +6,7 @@ import { loginUserActionCreator } from "../../store/users/userSlice";
 import Layout from "../Layout/Layout";
 import { useNavigate } from "react-router-dom";
 import paths from "../../routers/paths";
-import { userApiDataStructure } from "../../store/users/types";
+import { UserApiDataStructure } from "../../store/users/types";
 
 const App = (): JSX.Element => {
   const { getLocalStorageItem } = useLocalStorage();
@@ -22,7 +22,7 @@ const App = (): JSX.Element => {
         loginUserActionCreator({
           ...userData,
           token: storagedToken,
-        } as userApiDataStructure)
+        } as UserApiDataStructure)
       );
       navigate(paths.collection);
     } else {

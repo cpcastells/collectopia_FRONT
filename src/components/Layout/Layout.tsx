@@ -10,7 +10,7 @@ const Layout = (): React.ReactElement => {
   const location = useLocation();
   const {
     isLoading,
-    modalInfo: { isSuccess, isError },
+    modalData: { isSuccess, isError },
   } = useAppSelector((state) => state.uiStore);
 
   return (
