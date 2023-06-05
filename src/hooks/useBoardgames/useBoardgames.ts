@@ -6,7 +6,11 @@ import {
   BoardgamesApiResponse,
 } from "../../store/boardgames/types";
 import { useAppDispatch, useAppSelector } from "../../store";
-import { hideLoadingActionCreator } from "../../store/ui/uiSlice";
+import {
+  hideLoadingActionCreator,
+  showModalActionCreator,
+} from "../../store/ui/uiSlice";
+import { errorFeedback } from "../modalData";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -14,16 +18,25 @@ const useBoardgames = () => {
   const { token } = useAppSelector((state) => state.userStore);
   const dispatch = useAppDispatch();
 
-  const getBoardgames = useCallback(async (): Promise<BoardgameStructure[]> => {
-    const {
-      data: { boardgames },
-    } = await axios.get<BoardgamesApiResponse>(`${apiUrl}${paths.boardgames}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+  const getBoardgames = useCallback(async (): Promise<
+    BoardgameStructure[] | undefined
+  > => {
+    try {
+      const {
+        data: { boardgames },
+      } = await axios.get<BoardgamesApiResponse>(
+        `${apiUrl}${paths.boardgames}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
-    dispatch(hideLoadingActionCreator());
+      dispatch(hideLoadingActionCreator());
 
-    return boardgames;
+      return boardgames;
+    } catch (error) {
+      dispatch(showModalActionCreator(errorFeedback.loadBoardgames));
+    }
   }, [dispatch, token]);
   return { getBoardgames };
 };
