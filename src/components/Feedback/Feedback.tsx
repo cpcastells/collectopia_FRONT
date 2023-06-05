@@ -50,6 +50,11 @@ const Feedback = (): React.ReactElement => {
     case "credentials failed":
       IconComponent = FailedCredentials;
       ariaText = "failed credentials";
+      break;
+    case "loading failed":
+      IconComponent = FailedAdd;
+      ariaText = "failed loading";
+      break;
   }
 
   return (
