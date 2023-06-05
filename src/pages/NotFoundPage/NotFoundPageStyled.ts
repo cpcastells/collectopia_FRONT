@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const NotFoundPagedStyled = styled.div`
+const NotFoundPageStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,4 +27,4 @@ const NotFoundPagedStyled = styled.div`
     }
   }
 `;
-export default NotFoundPagedStyled;
+export default NotFoundPageStyled;

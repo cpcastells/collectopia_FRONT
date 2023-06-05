@@ -1,9 +1,9 @@
 import errorIcon from "../../assets/icons/error-404.svg";
-import NotFoundPagedStyled from "./NotFoundPageStyled";
+import NotFoundPageStyled from "./NotFoundPageStyled";
 
 const NotFoundPage = (): React.ReactElement => {
   return (
-    <NotFoundPagedStyled className="not-found">
+    <NotFoundPageStyled className="not-found">
       <span className="not-found__first-comment">!Oops!</span>
       <span className="not-found__second-comment">Analysis-Paralysis</span>
       <img
@@ -14,7 +14,7 @@ const NotFoundPage = (): React.ReactElement => {
         height={196}
       />
       <h2 className="not-found__title">error 404</h2>
-    </NotFoundPagedStyled>
+    </NotFoundPageStyled>
   );
 };
 
