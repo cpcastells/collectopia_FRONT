@@ -13,7 +13,9 @@ const CollectionPage = (): React.ReactElement => {
   useEffect(() => {
     (async () => {
       const boardgames = await getBoardgames();
-      dispatch(loadBoardgamesActionCreator(boardgames));
+      if (boardgames) {
+        dispatch(loadBoardgamesActionCreator(boardgames));
+      }
     })();
   }, [dispatch, getBoardgames]);
 
