@@ -28,9 +28,9 @@ const uiSlice = createSlice({
     showModal: (
       currentUiState: UiStateStructure,
       action: PayloadAction<ModalDataStructure>
-    ) => ({
+    ): UiStateStructure => ({
       ...currentUiState,
-      modalFeedback: action.payload,
+      modalData: action.payload,
     }),
   },
 });
