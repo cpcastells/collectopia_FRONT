@@ -45,7 +45,7 @@ const LoginForm = ({ submitForm }: LoginFormProps): React.ReactElement => {
       <input
         className="login-form__field"
         id="password"
-        type="text"
+        type="password"
         placeholder="Password"
         value={userCredentials.password}
         onChange={handleOnChange}
