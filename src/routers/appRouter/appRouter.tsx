@@ -6,6 +6,7 @@ import {
   LazyCollectionPage,
   LazyLoginPage,
 } from "../lazyComponents/lazyComponents";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 
 const routes: RouteObject[] = [
   {
@@ -29,6 +30,7 @@ const routes: RouteObject[] = [
           </Suspense>
         ),
       },
+      { path: paths.notFound, element: <NotFoundPage /> },
     ],
   },
 ];

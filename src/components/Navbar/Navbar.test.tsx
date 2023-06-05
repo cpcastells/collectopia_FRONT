@@ -8,7 +8,7 @@ import {
   createMemoryRouter,
 } from "react-router-dom";
 import paths from "../../routers/paths";
-import LoginPage from "../../pages/login/LoginPage";
+import LoginPage from "../../pages/LoginPage/LoginPage";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { store } from "../../store";

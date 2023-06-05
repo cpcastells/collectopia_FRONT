@@ -12,7 +12,7 @@ import { Provider } from "react-redux";
 import { store } from "../../store";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../styles/theme/theme";
-import CollectionPage from "../collection/CollectionPage";
+import CollectionPage from "../CollectionPage/CollectionPage";
 
 describe("Given a LoginPage page", () => {
   describe("When it is rendered", () => {

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store/index.js";
 import CollectionPageStyled from "./CollectionPageStyled.js";
 import { loadBoardgamesActionCreator } from "../../store/boardgames/boardgameSlice.js";
 import BoardgamesList from "../../components/BoardgamesList/BoardgamesList.js";
