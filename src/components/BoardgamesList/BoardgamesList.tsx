@@ -11,9 +11,12 @@ const BoardgamesList = ({
 }: BoardgamesListProps): React.ReactElement => {
   return (
     <BoardgamesListStyled>
-      {boardgames.map((boardgame) => (
+      {boardgames.map((boardgame, index) => (
         <li key={boardgame.id} className="card">
-          <BoardgameCard boardgame={boardgame} />
+          <BoardgameCard
+            boardgame={boardgame}
+            isLazy={index === 0 ? "eager" : "lazy"}
+          />
         </li>
       ))}
     </BoardgamesListStyled>
