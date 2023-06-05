@@ -12,6 +12,7 @@ const testCases = [
   { icon: "add failed", expectedText: "failed add" },
   { icon: "credentials success", expectedText: "success credentials" },
   { icon: "credentials failed", expectedText: "failed credentials" },
+  { icon: "loading failed", expectedText: "failed loading" },
 ];
 
 describe("Given a Feedback component", () => {
