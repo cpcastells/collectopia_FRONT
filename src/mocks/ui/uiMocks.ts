@@ -26,7 +26,7 @@ export const initialUiStateMock: UiStateStructure = {
     title: "",
     firstMessage: "",
     secondMessage: "",
-    isError: true,
+    isError: false,
     isSuccess: false,
     icon: "",
   },
