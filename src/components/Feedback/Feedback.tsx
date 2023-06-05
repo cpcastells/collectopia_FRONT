@@ -1,5 +1,5 @@
 import { SVGProps } from "react";
-import { useAppSelector } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import successExit from "../../assets/icons/exit-modal-success.svg";
 import failedExit from "../../assets/icons/exit-modal-fail.svg";
 import FeedbackStyled from "./FeedbackStyled";
@@ -11,10 +11,12 @@ import { ReactComponent as FailedAdd } from "../../assets/icons/add-failed.svg";
 import { ReactComponent as SuccessAdd } from "../../assets/icons/add-success.svg";
 import { ReactComponent as FailedCredentials } from "../../assets/icons/credentials-failed.svg";
 import { ReactComponent as SuccessCredentials } from "../../assets/icons/credentials-success.svg";
+import { hideModalActionCreator } from "../../store/ui/uiSlice";
 
 const Feedback = (): React.ReactElement => {
   const { title, firstMessage, secondMessage, icon, isError, isSuccess } =
     useAppSelector((state) => state.uiStore.modalData);
+  const dispatch = useAppDispatch();
 
   let IconComponent!: React.FunctionComponent<SVGProps<SVGSVGElement>>;
   let ariaText = "";
@@ -57,10 +59,14 @@ const Feedback = (): React.ReactElement => {
       break;
   }
 
+  const handleOnClose = (): void => {
+    dispatch(hideModalActionCreator());
+  };
+
   return (
     <FeedbackStyled>
       <div className="modal">
-        <button className="modal__exit">
+        <button className="modal__exit" onClick={handleOnClose}>
           {isSuccess && <img src={successExit} alt="exit button" />}
           {isError && <img src={failedExit} alt="exit button" />}
         </button>
