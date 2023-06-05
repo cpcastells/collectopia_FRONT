@@ -1,9 +1,9 @@
 import { Factory } from "fishery";
-import { uiStateStructure } from "../../../store/ui/types";
+import { UiStateStructure } from "../../../store/ui/types";
 
-const StateStructureMockFactory = Factory.define<uiStateStructure>(() => ({
+const StateStructureMockFactory = Factory.define<UiStateStructure>(() => ({
   isLoading: false,
-  modalInfo: {
+  modalData: {
     firstMessage: "",
     secondMessage: "",
     title: "",
@@ -14,7 +14,7 @@ const StateStructureMockFactory = Factory.define<uiStateStructure>(() => ({
 }));
 
 export const createStateStructureMock = (
-  overrides?: Partial<uiStateStructure>
-): uiStateStructure => {
+  overrides?: Partial<UiStateStructure>
+): UiStateStructure => {
   return StateStructureMockFactory.build(overrides);
 };

@@ -14,7 +14,7 @@ import { ReactComponent as SuccessCredentials } from "../../assets/icons/credent
 
 const Feedback = (): React.ReactElement => {
   const { title, firstMessage, secondMessage, icon, isError, isSuccess } =
-    useAppSelector((state) => state.uiStore.modalInfo);
+    useAppSelector((state) => state.uiStore.modalData);
 
   let IconComponent!: React.FunctionComponent<SVGProps<SVGSVGElement>>;
   let ariaText = "";

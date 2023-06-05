@@ -1,6 +1,6 @@
-export interface uiStateStructure {
+export interface UiStateStructure {
   isLoading?: boolean;
-  modalInfo: {
+  modalData: {
     isError: boolean;
     isSuccess: boolean;
     title?: string;
@@ -8,4 +8,13 @@ export interface uiStateStructure {
     secondMessage?: string;
     icon?: string;
   };
+}
+
+export interface ModalDataStructure {
+  isError?: boolean;
+  isSuccess?: boolean;
+  title?: string;
+  firstMessage: string;
+  secondMessage: string;
+  icon: string;
 }

@@ -8,7 +8,7 @@ import LoginPageStyled from "./LoginPageStyled";
 import useToken from "../../hooks/useToken/useToken";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 import paths from "../../routers/paths";
-import { userApiDataStructure } from "../../store/users/types";
+import { UserApiDataStructure } from "../../store/users/types";
 import mainLogo from "../../assets/icons/main-logo.svg";
 
 const LoginPage = (): React.ReactElement => {
@@ -25,7 +25,7 @@ const LoginPage = (): React.ReactElement => {
       const userData = decodeUserDataToken(token);
 
       dispatch(
-        loginUserActionCreator({ ...userData, token } as userApiDataStructure)
+        loginUserActionCreator({ ...userData, token } as UserApiDataStructure)
       );
 
       setLocalStorageItem("token", token);

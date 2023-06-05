@@ -19,7 +19,7 @@ describe("Given a Feedback component", () => {
     describe(`When it receives '${icon}' as an icon from the state`, () => {
       test(`Then it should render an icon with the aria text '${expectedText}'`, () => {
         const mockState = createStateStructureMock({
-          modalInfo: {
+          modalData: {
             isError: false,
             isSuccess: false,
             icon: icon,
@@ -39,7 +39,7 @@ describe("Given a Feedback component", () => {
     test("Then it should show a button with an icon ", () => {
       const expectedButtonAltText = "exit button";
       const mockState = createStateStructureMock({
-        modalInfo: {
+        modalData: {
           isError: true,
           isSuccess: false,
         },
@@ -57,7 +57,7 @@ describe("Given a Feedback component", () => {
     test("Then it should show a button with an icon ", () => {
       const expectedButtonAltText = "exit button";
       const mockState = createStateStructureMock({
-        modalInfo: {
+        modalData: {
           isError: false,
           isSuccess: true,
         },
