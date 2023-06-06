@@ -11,6 +11,10 @@ const NavbarStyled = styled.nav`
   .navbar-button {
     background: none;
   }
+
+  .active {
+    border-bottom: 3px solid;
+  }
 `;
 
 export default NavbarStyled;
