@@ -30,8 +30,6 @@ const useUser = () => {
       dispatch(hideLoadingActionCreator());
 
       dispatch(showModalActionCreator(errorFeedback.credentials));
-
-      return;
     }
   };
 
