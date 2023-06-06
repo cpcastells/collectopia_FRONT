@@ -29,4 +29,13 @@ export const errorHandlers = [
   rest.get(`${apiUrl}${paths.boardgames}`, (_req, res, ctx) => {
     return res(ctx.status(500), ctx.json({ message: "Error with the server" }));
   }),
+
+  rest.post(`${apiUrl}user/login`, (_req, res, ctx) => {
+    return res(
+      ctx.status(401),
+      ctx.json({
+        message: "Wrong credentials",
+      })
+    );
+  }),
 ];
