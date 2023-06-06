@@ -11,9 +11,16 @@ const boardgameSlice = createSlice({
       _currentBoardgameState,
       action: PayloadAction<BoardgameStructure[]>
     ) => [...action.payload],
+    removeBoardgame: (currentBoardgameState, action: PayloadAction<string>) => {
+      return currentBoardgameState.filter(
+        (boardgame) => boardgame.id === action.payload
+      );
+    },
   },
 });
 
-export const { loadBoardgames: loadBoardgamesActionCreator } =
-  boardgameSlice.actions;
+export const {
+  loadBoardgames: loadBoardgamesActionCreator,
+  removeBoardgame: removeBoardgameActionCreator,
+} = boardgameSlice.actions;
 export const boardgamesReducer = boardgameSlice.reducer;
