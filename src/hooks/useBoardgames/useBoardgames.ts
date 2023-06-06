@@ -36,6 +36,7 @@ const useBoardgames = () => {
       return boardgames;
     } catch (error) {
       dispatch(showModalActionCreator(errorFeedback.loadBoardgames));
+      dispatch(hideLoadingActionCreator());
     }
   }, [dispatch, token]);
   return { getBoardgames };

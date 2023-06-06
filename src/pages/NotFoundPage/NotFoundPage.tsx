@@ -4,7 +4,7 @@ import NotFoundPageStyled from "./NotFoundPageStyled";
 const NotFoundPage = (): React.ReactElement => {
   return (
     <NotFoundPageStyled className="not-found">
-      <span className="not-found__first-comment">!Oops!</span>
+      <span className="not-found__first-comment">Oops!</span>
       <span className="not-found__second-comment">Analysis-Paralysis</span>
       <img
         className="not-found__image"
