@@ -7,6 +7,7 @@ import timeIcon from "../../assets/icons/time-icon.svg";
 interface BoardgameCardProps {
   boardgame: BoardgameStructure;
   isLazy?: "lazy" | "eager";
+  onClick: (id: string) => void;
 }
 
 const BoardgameCard = ({
@@ -16,8 +17,10 @@ const BoardgameCard = ({
     duration,
     image,
     players: { min, max },
+    id,
   },
   isLazy,
+  onClick,
 }: BoardgameCardProps): React.ReactElement => {
   return (
     <BoardgameCardStyled>
@@ -60,7 +63,11 @@ const BoardgameCard = ({
       </div>
       <div className="card__buttons-container">
         <Button className={"card__details-button"} text={"Details"} />
-        <Button className={"card__delete-button"} text={"Delete"} />
+        <Button
+          className={"card__delete-button"}
+          text={"Delete"}
+          onClick={() => onClick(id)}
+        />
       </div>
     </BoardgameCardStyled>
   );
