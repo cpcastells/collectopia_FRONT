@@ -2,7 +2,7 @@ export const successFeedback = {
   add: {
     isError: false,
     isSuccess: true,
-    title: "!Congratulations!",
+    title: "Congratulations!",
     firstMessage: "Boardgame was",
     secondMessage: "added",
     icon: "add success",
@@ -11,7 +11,7 @@ export const successFeedback = {
   delete: {
     isError: false,
     isSuccess: true,
-    title: "!Bye Bye game!",
+    title: "Bye Bye game!",
     firstMessage: "Boardgame was",
     secondMessage: "deleted",
     icon: "delete success",
@@ -20,7 +20,7 @@ export const successFeedback = {
   edit: {
     isError: false,
     isSuccess: true,
-    title: "!Congratulations!",
+    title: "Congratulations!",
     firstMessage: "Boardgame was",
     secondMessage: "modified",
     icon: "edit success",
@@ -29,7 +29,7 @@ export const successFeedback = {
   credentials: {
     isError: false,
     isSuccess: true,
-    title: "!Welcome!",
+    title: "Welcome!",
     firstMessage: "Your credentials are",
     secondMessage: "valid",
     icon: "credentials success",
@@ -40,7 +40,7 @@ export const errorFeedback = {
   add: {
     isError: true,
     isSuccess: false,
-    title: "!Something went wrong!",
+    title: "Something went wrong!",
     firstMessage: "Boardgame was",
     secondMessage: "not added",
     icon: "add failed",
@@ -49,7 +49,7 @@ export const errorFeedback = {
   delete: {
     isError: true,
     isSuccess: false,
-    title: "!Something went wrong!",
+    title: "Something went wrong!",
     firstMessage: "Boardgame was",
     secondMessage: "not deleted",
     icon: "delete failed",
@@ -58,7 +58,7 @@ export const errorFeedback = {
   edit: {
     isError: true,
     isSuccess: false,
-    title: "!Something went wrong!",
+    title: "Something went wrong!",
     firstMessage: "Boardgame was",
     secondMessage: "not modified",
     icon: "edit failed",
@@ -67,7 +67,7 @@ export const errorFeedback = {
   credentials: {
     isError: true,
     isSuccess: false,
-    title: "!Hey!",
+    title: "Oh no! Try it again",
     firstMessage: "Your credentials are",
     secondMessage: "not valid",
     icon: "credentials failed",
