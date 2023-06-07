@@ -1,3 +1,4 @@
+import useBoardgames from "../../hooks/useBoardgames/useBoardgames";
 import { useAppDispatch } from "../../store";
 import { removeBoardgameActionCreator } from "../../store/boardgames/boardgameSlice";
 import { BoardgameStructure } from "../../store/boardgames/types";
@@ -12,8 +13,10 @@ const BoardgamesList = ({
   boardgames,
 }: BoardgamesListProps): React.ReactElement => {
   const dispatch = useAppDispatch();
+  const { deleteBoardgame } = useBoardgames();
 
   const handleOnDelete = (id: string): void => {
+    deleteBoardgame(id);
     dispatch(removeBoardgameActionCreator(id));
   };
 
