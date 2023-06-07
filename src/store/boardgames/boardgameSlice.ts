@@ -13,7 +13,7 @@ const boardgameSlice = createSlice({
     ) => [...action.payload],
     removeBoardgame: (currentBoardgameState, action: PayloadAction<string>) => {
       return currentBoardgameState.filter(
-        (boardgame) => boardgame.id === action.payload
+        (boardgame) => boardgame.id !== action.payload
       );
     },
   },
