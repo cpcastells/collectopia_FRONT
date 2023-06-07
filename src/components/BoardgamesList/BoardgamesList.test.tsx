@@ -32,9 +32,9 @@ describe("Given a BoardgamesList component", () => {
       const boardgameName = screen.getByRole("heading", {
         name: gameTitle,
       });
-      screen.debug();
+
       await userEvent.click(deleteButtons[0]);
-      screen.debug();
+
       expect(boardgameName).not.toBeInTheDocument();
     });
   });

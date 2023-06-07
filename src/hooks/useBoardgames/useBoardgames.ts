@@ -8,9 +8,10 @@ import {
 import { useAppDispatch, useAppSelector } from "../../store";
 import {
   hideLoadingActionCreator,
+  showLoadingActionCreator,
   showModalActionCreator,
 } from "../../store/ui/uiSlice";
-import { errorFeedback } from "../modalData";
+import { errorFeedback, successFeedback } from "../modalData";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -36,10 +37,30 @@ const useBoardgames = () => {
       return boardgames;
     } catch (error) {
       dispatch(showModalActionCreator(errorFeedback.loadBoardgames));
+
       dispatch(hideLoadingActionCreator());
     }
   }, [dispatch, token]);
-  return { getBoardgames };
+
+  const deleteBoardgame = async (boargameId: string) => {
+    try {
+      dispatch(showLoadingActionCreator());
+
+      await axios.delete(`${apiUrl}${paths.boardgames}/${boargameId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(showModalActionCreator(successFeedback.delete));
+    } catch (error) {
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(showModalActionCreator(errorFeedback.delete));
+    }
+  };
+
+  return { getBoardgames, deleteBoardgame };
 };
 
 export default useBoardgames;

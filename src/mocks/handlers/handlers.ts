@@ -6,7 +6,7 @@ import { boardGamesMock } from "../boardgames/boardgamesMocks";
 const apiUrl = import.meta.env.VITE_API_URL;
 
 export const handlers = [
-  rest.post(`${apiUrl}user/login`, (_req, res, ctx) => {
+  rest.post(`${apiUrl}${paths.loginEndpoint}`, (_req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -20,6 +20,15 @@ export const handlers = [
       ctx.status(200),
       ctx.json({
         boardgames: boardGamesMock,
+      })
+    );
+  }),
+
+  rest.delete(`${apiUrl}${paths.boardgames}/123`, (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        message: "Boardgame deleted!",
       })
     );
   }),
