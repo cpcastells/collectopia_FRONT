@@ -12,8 +12,8 @@ export interface BoardgameStructure {
   price?: number;
   author?: string;
   releaseYear?: number;
-  user: string;
-  id: string;
+  user?: string;
+  id?: string;
 }
 
 export interface BoardgamesApiResponse {
