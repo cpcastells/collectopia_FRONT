@@ -1,4 +1,4 @@
-export interface BoardgameStructure {
+export interface BoardgameBaseStructure {
   players: {
     min: number;
     max?: number;
@@ -13,9 +13,10 @@ export interface BoardgameStructure {
   author?: string;
   releaseYear?: number;
   user?: string;
-  id?: string;
 }
-
+export interface BoardgameStructure extends BoardgameBaseStructure {
+  id: string;
+}
 export interface BoardgamesApiResponse {
   boardgames: BoardgameStructure[];
 }

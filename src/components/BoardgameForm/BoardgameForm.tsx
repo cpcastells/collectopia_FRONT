@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import Button from "../Button/Button";
 import BoardgameFormStyled from "./BoardgameFormStyled";
-import { BoardgameStructure } from "../../store/boardgames/types";
+import { BoardgameBaseStructure } from "../../store/boardgames/types";
 
 const BoardgameForm = (): React.ReactElement => {
-  const initialBoardgame: BoardgameStructure = {
+  const initialBoardgame: BoardgameBaseStructure = {
     title: "",
     duration: 0,
     players: {
@@ -22,7 +22,7 @@ const BoardgameForm = (): React.ReactElement => {
   };
 
   const [newBoardgame, setNewBoardgame] =
-    useState<BoardgameStructure>(initialBoardgame);
+    useState<BoardgameBaseStructure>(initialBoardgame);
 
   const handleOnChange = (
     event: React.ChangeEvent<
