@@ -47,6 +47,15 @@ const BoardgameForm = (): React.ReactElement => {
     }
   };
 
+  const isDisabled =
+    !newBoardgame.title ||
+    !newBoardgame.duration ||
+    !newBoardgame.players.min ||
+    !newBoardgame.category ||
+    !newBoardgame.mechanics ||
+    !newBoardgame.image ||
+    !newBoardgame.briefDescription;
+
   return (
     <BoardgameFormStyled className="form">
       <div className="form__control-form">
@@ -171,7 +180,7 @@ const BoardgameForm = (): React.ReactElement => {
         <label htmlFor="briefDescription">Description:</label>
         <textarea id="briefDescription" onChange={handleOnChange} />
       </div>
-      <Button text="Add" className="form__button" />
+      <Button text="Add" className="form__button" isDisabled={isDisabled} />
     </BoardgameFormStyled>
   );
 };

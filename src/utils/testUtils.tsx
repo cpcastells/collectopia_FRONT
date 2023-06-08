@@ -22,7 +22,7 @@ export const renderWithProviders = (
 
   const testStore = preloadedState ? setupStore(preloadedState) : store;
 
-  const Wrapper = (): JSX.Element => {
+  const Wrapper = (): React.ReactElement => {
     return (
       <Provider store={testStore}>
         <ThemeProvider theme={theme}>

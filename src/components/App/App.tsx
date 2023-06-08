@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import paths from "../../routers/paths";
 import { UserApiDataStructure } from "../../store/users/types";
 
-const App = (): JSX.Element => {
+const App = (): React.ReactElement => {
   const { getLocalStorageItem } = useLocalStorage();
   const { decodeUserDataToken } = useToken();
   const navigate = useNavigate();
