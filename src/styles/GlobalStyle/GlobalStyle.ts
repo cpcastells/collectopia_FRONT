@@ -46,6 +46,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button {
+    padding: 0;
     border: none;
     cursor: pointer;
     font-family: inherit;

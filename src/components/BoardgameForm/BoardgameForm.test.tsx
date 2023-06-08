@@ -1,4 +1,5 @@
 import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { renderWithProviders } from "../../utils/testUtils";
 import BoardgameForm from "./BoardgameForm";
 
@@ -36,6 +37,36 @@ describe("Given a BoardgameForm component", () => {
       const field = screen.getByRole("button", { name: expectedText });
 
       expect(field).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user types 'Gloomhaven' in the title field", () => {
+    test("Then it should show the typed text", async () => {
+      const typedBoardgameTitle = "Gloomhaven";
+      const titleLabelText = "Title:";
+
+      renderWithProviders(<BoardgameForm />);
+
+      const titleField = screen.getByLabelText(titleLabelText);
+
+      await userEvent.type(titleField, typedBoardgameTitle);
+
+      expect(titleField).toHaveValue(typedBoardgameTitle);
+    });
+  });
+
+  describe("When the user types '2' in the min. players field", () => {
+    test("Then it should show the typed number", async () => {
+      const typedMinPlayers = 3;
+      const titleLabelText = "Min. players:";
+
+      renderWithProviders(<BoardgameForm />);
+
+      const titleField = screen.getByLabelText(titleLabelText);
+
+      await userEvent.type(titleField, typedMinPlayers.toString());
+
+      expect(titleField).toHaveValue(typedMinPlayers);
     });
   });
 });
