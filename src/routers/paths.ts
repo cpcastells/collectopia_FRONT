@@ -3,6 +3,7 @@ const paths = {
   notFound: "*",
   login: "/login",
   collection: "/collection",
+  addBoardgame: "/add-boardgame",
   boardgames: "boardgames",
   loginEndpoint: "user/login",
 };

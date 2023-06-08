@@ -8,6 +8,7 @@ import { theme } from "./styles/theme/theme";
 import { GlobalStyle } from "./styles/GlobalStyle/GlobalStyle";
 import "@fontsource/jost";
 import "@fontsource/jost/400.css";
+import "@fontsource/jost/500.css";
 import "@fontsource/jost/700.css";
 import "@fontsource/poppins";
 import "@fontsource/poppins/500.css";

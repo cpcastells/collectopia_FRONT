@@ -58,6 +58,9 @@ describe("Given a LoginPage page", () => {
 
       await userEvent.click(loginButton);
 
+      const heading = screen.getByRole("heading", { name: "My collection" });
+
+      expect(heading).toBeInTheDocument();
       expect(routerTest.state.location.pathname).toBe(paths.collection);
     });
   });

@@ -3,6 +3,7 @@ import App from "../../components/App/App";
 import { Suspense } from "react";
 import paths from "../paths";
 import {
+  LazyAddBoardgamePage,
   LazyCollectionPage,
   LazyLoginPage,
 } from "../lazyComponents/lazyComponents";
@@ -30,6 +31,15 @@ const routes: RouteObject[] = [
           </Suspense>
         ),
       },
+      {
+        path: paths.addBoardgame,
+        element: (
+          <Suspense>
+            <LazyAddBoardgamePage />
+          </Suspense>
+        ),
+      },
+
       { path: paths.notFound, element: <NotFoundPage /> },
     ],
   },

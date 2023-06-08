@@ -7,3 +7,7 @@ export const LazyLoginPage = lazy(
 export const LazyCollectionPage = lazy(
   () => import("../../pages/CollectionPage/CollectionPage")
 );
+
+export const LazyAddBoardgamePage = lazy(
+  () => import("../../pages/AddBoardgamePage/AddBoardgamePage")
+);

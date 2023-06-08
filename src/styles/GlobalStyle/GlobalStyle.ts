@@ -50,4 +50,14 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
     font-family: inherit;
   }
+
+  input {
+    border: none;
+    font: inherit;
+  }
+
+  textarea {
+    border: none;
+    font: inherit;
+  }
 `;
