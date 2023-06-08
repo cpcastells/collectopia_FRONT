@@ -15,6 +15,17 @@ const CollectionPage = (): React.ReactElement => {
       const boardgames = await getBoardgames();
       if (boardgames) {
         dispatch(loadBoardgamesActionCreator(boardgames));
+
+        const firstImage = boardgames[0].image;
+
+        const preconnectElement = await document.createElement("link");
+        preconnectElement.rel = "preload";
+        preconnectElement.as = "image";
+        preconnectElement.href = firstImage;
+
+        const parent = document.head;
+        const firstChild = document.head.firstChild;
+        parent.insertBefore(preconnectElement, firstChild);
       }
     })();
   }, [dispatch, getBoardgames]);
