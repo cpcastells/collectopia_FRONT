@@ -34,7 +34,7 @@ const Navbar = (): React.ReactElement => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/add" aria-label="add boardgame">
+          <NavLink to={paths.addBoardgame} aria-label="add boardgame">
             <img src={newIcon} alt="add boardgame" width={48} height={48} />
           </NavLink>
         </li>
