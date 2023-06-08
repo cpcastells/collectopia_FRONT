@@ -8,6 +8,7 @@ import paths from "../../routers/paths";
 import newIcon from "../../assets/icons/new-icon.svg";
 import homeIcon from "../../assets/icons/home-icon.svg";
 import logoutIcon from "../../assets/icons/logout-icon.svg";
+import Button from "../Button/Button";
 
 const Navbar = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -39,9 +40,14 @@ const Navbar = (): React.ReactElement => {
           </NavLink>
         </li>
         <li>
-          <button className="navbar-button" onClick={onLogoutUser}>
-            <img src={logoutIcon} alt="logout user" width={48} height={48} />
-          </button>
+          <Button
+            className="navbar-button"
+            onClick={onLogoutUser}
+            url={logoutIcon}
+            altText="logout user"
+            width="48"
+            height="48"
+          />
         </li>
       </ul>
     </NavbarStyled>
