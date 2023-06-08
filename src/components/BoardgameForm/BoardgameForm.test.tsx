@@ -69,4 +69,50 @@ describe("Given a BoardgameForm component", () => {
       expect(titleField).toHaveValue(typedMinPlayers);
     });
   });
+
+  describe("When the user fills all required fields", () => {
+    test("Then the Add button should be enabled", async () => {
+      const typedBoardgameTitle = "Gloomhaven";
+      const typedPlaytime = 120;
+      const typedMinPlayers = 2;
+      const typedMaxPlayers = 5;
+      const typedCategory = "Eurogame";
+      const typedMechanics = "Worker Placement";
+      const typedImageUrl = "http://example.com/image.png";
+      const typedReleaseYear = 2017;
+      const typedAuthor = "Isaac Childres";
+      const typedPrice = 60;
+      const typedDescription =
+        "Gloomhaven is a game of Euro-inspired tactical combat in a persistent world of shifting motives.";
+
+      renderWithProviders(<BoardgameForm />);
+
+      const titleField = screen.getByLabelText("Title:");
+      const playtimeField = screen.getByLabelText("Playtime (minutes):");
+      const minPlayersField = screen.getByLabelText("Min. players:");
+      const maxPlayersField = screen.getByLabelText("Max. players:");
+      const categoryField = screen.getByLabelText("Category:");
+      const mechanicsField = screen.getByLabelText("Mechanics");
+      const imageUrlField = screen.getByLabelText("Image (url):");
+      const releaseYearField = screen.getByLabelText("Release year:");
+      const authorField = screen.getByLabelText("Author:");
+      const priceField = screen.getByLabelText("Price - €:");
+      const descriptionField = screen.getByLabelText("Description:");
+      const addButton = screen.getByRole("button", { name: /add/i });
+
+      await userEvent.type(titleField, typedBoardgameTitle);
+      await userEvent.type(playtimeField, typedPlaytime.toString());
+      await userEvent.type(minPlayersField, typedMinPlayers.toString());
+      await userEvent.type(maxPlayersField, typedMaxPlayers.toString());
+      userEvent.selectOptions(categoryField, [typedCategory]);
+      await userEvent.selectOptions(mechanicsField, [typedMechanics]);
+      await userEvent.type(imageUrlField, typedImageUrl);
+      await userEvent.type(releaseYearField, typedReleaseYear.toString());
+      await userEvent.type(authorField, typedAuthor);
+      await userEvent.type(priceField, typedPrice.toString());
+      await userEvent.type(descriptionField, typedDescription);
+
+      expect(addButton).toBeEnabled();
+    });
+  });
 });
