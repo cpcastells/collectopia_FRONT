@@ -107,8 +107,8 @@ describe("Given a BoardgameForm component", () => {
       await userEvent.type(playtimeField, typedPlaytime.toString());
       await userEvent.type(minPlayersField, typedMinPlayers.toString());
       await userEvent.type(maxPlayersField, typedMaxPlayers.toString());
-      userEvent.selectOptions(categoryField, [typedCategory]);
-      userEvent.selectOptions(mechanicsField, [typedMechanics]);
+      await userEvent.selectOptions(categoryField, [typedCategory]);
+      await userEvent.selectOptions(mechanicsField, [typedMechanics]);
       await userEvent.type(imageUrlField, typedImageUrl);
       await userEvent.type(releaseYearField, typedReleaseYear.toString());
       await userEvent.type(authorField, typedAuthor);
