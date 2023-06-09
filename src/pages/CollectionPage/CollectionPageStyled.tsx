@@ -13,6 +13,11 @@ const CollectionPageStyled = styled.div`
     color: ${(props) => props.theme.colors["dark-green"]};
     padding-top: 26px;
   }
+
+  .collection-load {
+    background-color: ${(props) => props.theme.colors.background};
+    margin: 30px 0;
+  }
 `;
 
 export default CollectionPageStyled;
