@@ -1,25 +1,35 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { BoardgameStructure } from "./types";
+import { BoardgameStructure, BoardgamesApiResponse } from "./types";
 
-export const initialBoardgamesState: BoardgameStructure[] = [];
+export const initialBoardgamesState: BoardgamesApiResponse = {
+  boardgames: [],
+};
 
 const boardgameSlice = createSlice({
   name: "boardgame",
   initialState: initialBoardgamesState,
   reducers: {
     loadBoardgames: (
-      _currentBoardgameState,
+      currentBoardgameState,
       action: PayloadAction<BoardgameStructure[]>
-    ) => [...action.payload],
-    removeBoardgame: (currentBoardgameState, action: PayloadAction<string>) => {
-      return currentBoardgameState.filter(
+    ) => ({ ...currentBoardgameState, boardgames: action.payload }),
+
+    removeBoardgame: (
+      currentBoardgameState,
+      action: PayloadAction<string>
+    ): BoardgamesApiResponse => ({
+      ...currentBoardgameState,
+      boardgames: currentBoardgameState.boardgames.filter(
         (boardgame) => boardgame.id !== action.payload
-      );
-    },
+      ),
+    }),
     addBoardgame: (
       currentBoardgameState,
       action: PayloadAction<BoardgameStructure>
-    ) => [...currentBoardgameState, action.payload],
+    ) => ({
+      ...currentBoardgameState,
+      boardgames: [...currentBoardgameState.boardgames, action.payload],
+    }),
   },
 });
 
