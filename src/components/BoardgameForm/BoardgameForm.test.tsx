@@ -2,6 +2,7 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderWithProviders } from "../../utils/testUtils";
 import BoardgameForm from "./BoardgameForm";
+import { vi } from "vitest";
 
 const testCases = [
   "Title:",
@@ -15,11 +16,13 @@ const testCases = [
   "Description:",
 ];
 
+const submitForm = vi.fn();
+
 describe("Given a BoardgameForm component", () => {
   testCases.forEach((expectedText) => {
     describe("When it is rendered", () => {
       test(`Then it should show a text field with the label '${expectedText}'`, () => {
-        renderWithProviders(<BoardgameForm />);
+        renderWithProviders(<BoardgameForm submitBoardgameForm={submitForm} />);
 
         const field = screen.getByLabelText(expectedText);
 
@@ -32,7 +35,7 @@ describe("Given a BoardgameForm component", () => {
     test("Then it should show a button with the text 'Add'", () => {
       const expectedText = "Add";
 
-      renderWithProviders(<BoardgameForm />);
+      renderWithProviders(<BoardgameForm submitBoardgameForm={submitForm} />);
 
       const field = screen.getByRole("button", { name: expectedText });
 
@@ -45,7 +48,7 @@ describe("Given a BoardgameForm component", () => {
       const typedBoardgameTitle = "Gloomhaven";
       const titleLabelText = "Title:";
 
-      renderWithProviders(<BoardgameForm />);
+      renderWithProviders(<BoardgameForm submitBoardgameForm={submitForm} />);
 
       const titleField = screen.getByLabelText(titleLabelText);
 
@@ -60,7 +63,7 @@ describe("Given a BoardgameForm component", () => {
       const typedMinPlayers = 3;
       const titleLabelText = "Min. players:";
 
-      renderWithProviders(<BoardgameForm />);
+      renderWithProviders(<BoardgameForm submitBoardgameForm={submitForm} />);
 
       const titleField = screen.getByLabelText(titleLabelText);
 
@@ -85,7 +88,7 @@ describe("Given a BoardgameForm component", () => {
       const typedDescription =
         "Gloomhaven is a game of Euro-inspired tactical combat in a persistent world of shifting motives.";
 
-      renderWithProviders(<BoardgameForm />);
+      renderWithProviders(<BoardgameForm submitBoardgameForm={submitForm} />);
 
       const titleField = screen.getByLabelText("Title:");
       const playtimeField = screen.getByLabelText("Playtime (minutes):");
@@ -105,14 +108,17 @@ describe("Given a BoardgameForm component", () => {
       await userEvent.type(minPlayersField, typedMinPlayers.toString());
       await userEvent.type(maxPlayersField, typedMaxPlayers.toString());
       userEvent.selectOptions(categoryField, [typedCategory]);
-      await userEvent.selectOptions(mechanicsField, [typedMechanics]);
+      userEvent.selectOptions(mechanicsField, [typedMechanics]);
       await userEvent.type(imageUrlField, typedImageUrl);
       await userEvent.type(releaseYearField, typedReleaseYear.toString());
       await userEvent.type(authorField, typedAuthor);
       await userEvent.type(priceField, typedPrice.toString());
       await userEvent.type(descriptionField, typedDescription);
 
+      await userEvent.click(addButton);
+
       expect(addButton).toBeEnabled();
+      expect(submitForm).toHaveBeenCalled();
     });
   });
 });
