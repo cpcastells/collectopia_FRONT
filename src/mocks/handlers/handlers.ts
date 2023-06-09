@@ -32,6 +32,15 @@ export const handlers = [
       })
     );
   }),
+
+  rest.post(`${apiUrl}${paths.createEndpoint}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(201),
+      ctx.json({
+        boardgame: boardGamesMock[1],
+      })
+    );
+  }),
 ];
 
 export const errorHandlers = [
@@ -39,11 +48,20 @@ export const errorHandlers = [
     return res(ctx.status(500), ctx.json({ message: "Error with the server" }));
   }),
 
-  rest.post(`${apiUrl}user/login`, (_req, res, ctx) => {
+  rest.post(`${apiUrl}${paths.loginEndpoint}`, (_req, res, ctx) => {
     return res(
       ctx.status(401),
       ctx.json({
         message: "Wrong credentials",
+      })
+    );
+  }),
+
+  rest.post(`${apiUrl}${paths.createEndpoint}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(404),
+      ctx.json({
+        message: "Error: no boardgame was created",
       })
     );
   }),

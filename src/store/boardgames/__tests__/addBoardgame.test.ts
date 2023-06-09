@@ -1,6 +1,6 @@
 import {
   boardGamesMock,
-  newBoardgame,
+  newBoardgameMock,
 } from "../../../mocks/boardgames/boardgamesMocks";
 import {
   addBoardgameActionCreator,
@@ -13,7 +13,7 @@ describe("Given a addBoardgame reducer", () => {
     test("Then it should return a list with one boardgame more", () => {
       const expectedTitle = "Catan";
       const currentBoardgameState: BoardgameStructure[] = boardGamesMock;
-      const newUserBoardgame = newBoardgame;
+      const newUserBoardgame = newBoardgameMock;
 
       const addBoardgameAction = addBoardgameActionCreator(newUserBoardgame);
 

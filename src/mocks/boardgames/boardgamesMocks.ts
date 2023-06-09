@@ -41,7 +41,7 @@ export const boardGamesMock: BoardgameStructure[] = [
   },
 ];
 
-export const newBoardgame: BoardgameStructure = {
+export const newBoardgameMock: BoardgameStructure = {
   players: {
     min: 2,
     max: 4,
