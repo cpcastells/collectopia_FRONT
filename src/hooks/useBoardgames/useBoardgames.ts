@@ -2,6 +2,7 @@ import axios from "axios";
 import { useCallback } from "react";
 import paths from "../../routers/paths";
 import {
+  BoardgameBaseStructure,
   BoardgameStructure,
   BoardgamesApiResponse,
 } from "../../store/boardgames/types";
@@ -60,7 +61,25 @@ const useBoardgames = () => {
     }
   };
 
-  return { getBoardgames, deleteBoardgame };
+  const addBoardgame = async (boardgame: BoardgameBaseStructure) => {
+    try {
+      dispatch(showLoadingActionCreator());
+
+      await axios.post(`${apiUrl}${paths.createEndpoint}`, boardgame, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(showModalActionCreator(successFeedback.add));
+    } catch (error) {
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(showModalActionCreator(errorFeedback.add));
+    }
+  };
+
+  return { getBoardgames, deleteBoardgame, addBoardgame };
 };
 
 export default useBoardgames;
