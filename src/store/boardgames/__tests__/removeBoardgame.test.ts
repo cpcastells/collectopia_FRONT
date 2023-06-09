@@ -7,7 +7,7 @@ import { BoardgameStructure } from "../types";
 
 describe("Given a removeBoardgame reducer", () => {
   describe("When it receives a removeBoardgame action and a currentState with two boardgames", () => {
-    test("Then it should a list with one task less", () => {
+    test("Then it should return a list with one boardgame less", () => {
       const currentBoardgameState: BoardgameStructure[] = boardGamesMock;
       const id = boardGamesMock[0].id;
 
