@@ -34,7 +34,7 @@ const CollectionPage = (): React.ReactElement => {
   return (
     <CollectionPageStyled>
       <h2 className="collection-title">My collection</h2>
-      <BoardgamesList boardgames={boardgames} />
+      <BoardgamesList boardgames={boardgames.boardgames} />
       <Pagination />
     </CollectionPageStyled>
   );

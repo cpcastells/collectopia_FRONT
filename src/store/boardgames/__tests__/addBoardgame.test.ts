@@ -6,13 +6,15 @@ import {
   addBoardgameActionCreator,
   boardgamesReducer,
 } from "../boardgameSlice";
-import { BoardgameStructure } from "../types";
+import { BoardgamesApiResponse } from "../types";
 
 describe("Given a addBoardgame reducer", () => {
   describe("When it receives a currentState with two boardgames and a new boardgame as a payload", () => {
     test("Then it should return a list with one boardgame more", () => {
       const expectedTitle = "Catan";
-      const currentBoardgameState: BoardgameStructure[] = boardGamesMock;
+      const currentBoardgameState: BoardgamesApiResponse = {
+        boardgames: boardGamesMock,
+      };
       const newUserBoardgame = newBoardgameMock;
 
       const addBoardgameAction = addBoardgameActionCreator(newUserBoardgame);
@@ -22,8 +24,8 @@ describe("Given a addBoardgame reducer", () => {
         addBoardgameAction
       );
 
-      expect(newBoardgamesState).toHaveLength(3);
-      expect(newBoardgamesState[2].title).toBe(expectedTitle);
+      expect(newBoardgamesState.boardgames).toHaveLength(3);
+      expect(newBoardgamesState.boardgames[2].title).toBe(expectedTitle);
     });
   });
 });

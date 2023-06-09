@@ -9,18 +9,18 @@ describe("Given a loadBoardgames reducer", () => {
   describe("When it receives an empty collection of boardgames and a collection of boardgames as a payload", () => {
     test("Then it should return that collection of boardgames", () => {
       const currentBoardgameState = initialBoardgamesState;
-      const expectedBoardgameState = boardgamesFactory.buildList(2);
+      const newBoardgameState = boardgamesFactory.buildList(2);
+      const expectedBoardgameState = { boardgames: newBoardgameState };
 
-      const loadBoardgamesAction = loadBoardgamesActionCreator(
-        expectedBoardgameState
-      );
+      const loadBoardgamesAction =
+        loadBoardgamesActionCreator(newBoardgameState);
 
-      const newBoardgameState = boardgamesReducer(
+      const newState = boardgamesReducer(
         currentBoardgameState,
         loadBoardgamesAction
       );
 
-      expect(expectedBoardgameState).toStrictEqual(newBoardgameState);
+      expect(expectedBoardgameState).toStrictEqual(newState);
     });
   });
 });
