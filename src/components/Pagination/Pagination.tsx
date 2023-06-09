@@ -8,7 +8,6 @@ const Pagination = (): React.ReactElement => {
       altText="load more button"
       height="89"
       width="121"
-      onClick={() => ({})}
       className="collection-load"
     />
   );
