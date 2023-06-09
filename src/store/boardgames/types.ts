@@ -20,3 +20,7 @@ export interface BoardgameStructure extends BoardgameBaseStructure {
 export interface BoardgamesApiResponse {
   boardgames: BoardgameStructure[];
 }
+
+export interface BoardgameCreateResponse {
+  boardgame: BoardgameStructure;
+}

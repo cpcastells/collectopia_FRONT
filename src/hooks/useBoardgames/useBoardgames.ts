@@ -3,6 +3,7 @@ import { useCallback } from "react";
 import paths from "../../routers/paths";
 import {
   BoardgameBaseStructure,
+  BoardgameCreateResponse,
   BoardgameStructure,
   BoardgamesApiResponse,
 } from "../../store/boardgames/types";
@@ -61,17 +62,24 @@ const useBoardgames = () => {
     }
   };
 
-  const addBoardgame = async (boardgame: BoardgameBaseStructure) => {
+  const addBoardgame = async (
+    boardgame: BoardgameBaseStructure
+  ): Promise<BoardgameCreateResponse | undefined> => {
     try {
       dispatch(showLoadingActionCreator());
 
-      await axios.post(`${apiUrl}${paths.createEndpoint}`, boardgame, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const { data } = await axios.post<BoardgameCreateResponse>(
+        `${apiUrl}${paths.createEndpoint}`,
+        boardgame,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       dispatch(hideLoadingActionCreator());
 
       dispatch(showModalActionCreator(successFeedback.add));
+      return data;
     } catch (error) {
       dispatch(hideLoadingActionCreator());
 
