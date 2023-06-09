@@ -4,6 +4,7 @@ import CollectionPageStyled from "./CollectionPageStyled.js";
 import { loadBoardgamesActionCreator } from "../../store/boardgames/boardgameSlice.js";
 import BoardgamesList from "../../components/BoardgamesList/BoardgamesList.js";
 import useBoardgames from "../../hooks/useBoardgames/useBoardgames.js";
+import Pagination from "../../components/Pagination/Pagination.js";
 
 const CollectionPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -34,6 +35,7 @@ const CollectionPage = (): React.ReactElement => {
     <CollectionPageStyled>
       <h2 className="collection-title">My collection</h2>
       <BoardgamesList boardgames={boardgames} />
+      <Pagination />
     </CollectionPageStyled>
   );
 };
