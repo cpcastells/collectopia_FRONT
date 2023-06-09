@@ -40,3 +40,23 @@ export const boardGamesMock: BoardgameStructure[] = [
     id: "6478dd2fe3e61710d8baa04d",
   },
 ];
+
+export const newBoardgameMock: BoardgameStructure = {
+  players: {
+    min: 2,
+    max: 4,
+  },
+  title: "Catan",
+  image:
+    "https://cdn.discordapp.com/attachments/1114204200885301331/1114204323430277160/Brass_Lancashire.webp",
+  category: "Strategy",
+  mechanics: "Route/Network Building",
+  duration: 160,
+  briefDescription:
+    "Brass: Lancashire is a game of economic strategy, set during the industrial revolution in Lancashire.",
+  price: 60,
+  author: "Martin Wallace",
+  releaseYear: 2007,
+  user: "646f7e585189305e28a57d55",
+  id: "6478dd2fe3e61710d8baa04d",
+};

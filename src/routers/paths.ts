@@ -6,6 +6,7 @@ const paths = {
   addBoardgame: "/add-boardgame",
   boardgames: "boardgames",
   loginEndpoint: "user/login",
+  createEndpoint: "boardgames/create",
 };
 
 export default paths;

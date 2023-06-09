@@ -1,36 +1,38 @@
 import { render, renderHook, screen } from "@testing-library/react";
+import { store } from "../../../store";
 import { errorFeedback, successFeedback } from "../../modalData";
 import useBoardgames from "../useBoardgames";
 import { wrapper } from "../../../utils/testUtils";
-import { vi } from "vitest";
-import { store } from "../../../store";
-import { showModalActionCreator } from "../../../store/ui/uiSlice";
 import {
   RouteObject,
   RouterProvider,
   createMemoryRouter,
 } from "react-router-dom";
 import Layout from "../../../components/Layout/Layout";
-import { Provider } from "react-redux";
+import { newBoardgameMock } from "../../../mocks/boardgames/boardgamesMocks";
+import { vi } from "vitest";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../../styles/theme/theme";
-import { errorHandlers } from "../../../mocks/handlers/handlers";
+import { Provider } from "react-redux";
+import { showModalActionCreator } from "../../../store/ui/uiSlice";
 import { server } from "../../../mocks/server/server";
+import { errorHandlers } from "../../../mocks/handlers/handlers";
 
-describe("Given a deleteBoardgame function ", () => {
+describe("Given a addBoargame function ", () => {
+  const boardgame = newBoardgameMock;
+
   describe("When it is called with a boardgameId", () => {
     test("Then it should dispatch the showModal action", async () => {
-      const boardgameId = "123";
       const dispatch = vi.spyOn(store, "dispatch");
-      const modalData = successFeedback.delete;
+      const modalData = successFeedback.add;
 
       const {
         result: {
-          current: { deleteBoardgame },
+          current: { addBoardgame },
         },
       } = renderHook(() => useBoardgames(), { wrapper: wrapper });
 
-      await deleteBoardgame(boardgameId);
+      await addBoardgame(boardgame);
 
       const routes: RouteObject[] = [{ path: "/", element: <Layout /> }];
 
@@ -45,7 +47,7 @@ describe("Given a deleteBoardgame function ", () => {
       );
 
       const heading = screen.getByRole("heading", {
-        name: successFeedback.delete.title,
+        name: successFeedback.add.title,
       });
 
       expect(dispatch).toHaveBeenCalledWith(showModalActionCreator(modalData));
@@ -56,17 +58,17 @@ describe("Given a deleteBoardgame function ", () => {
   describe("When it rejects with an error", () => {
     test("Then it should dispatch a showModal action ", async () => {
       const dispatch = vi.spyOn(store, "dispatch");
-      const modalData = errorFeedback.loadBoardgames;
+      const modalData = errorFeedback.add;
 
       server.resetHandlers(...errorHandlers);
 
       const {
         result: {
-          current: { getBoardgames },
+          current: { addBoardgame },
         },
       } = renderHook(() => useBoardgames(), { wrapper: wrapper });
 
-      const result = await getBoardgames();
+      const result = await addBoardgame(boardgame);
 
       expect(result).toBe(undefined);
       expect(dispatch).toHaveBeenCalledWith(showModalActionCreator(modalData));
