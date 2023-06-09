@@ -4,7 +4,13 @@ import Button from "../Button/Button";
 import BoardgameFormStyled from "./BoardgameFormStyled";
 import { BoardgameBaseStructure } from "../../store/boardgames/types";
 
-const BoardgameForm = (): React.ReactElement => {
+interface BoardgameFormProps {
+  submitBoardgameForm: (boardgame: BoardgameBaseStructure) => Promise<void>;
+}
+
+const BoardgameForm = ({
+  submitBoardgameForm,
+}: BoardgameFormProps): React.ReactElement => {
   const initialBoardgame: BoardgameBaseStructure = {
     title: "",
     duration: 0,
@@ -47,6 +53,11 @@ const BoardgameForm = (): React.ReactElement => {
     }
   };
 
+  const handleOnSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    submitBoardgameForm(newBoardgame);
+  };
+
   const isDisabled =
     !newBoardgame.title ||
     !newBoardgame.duration ||
@@ -57,7 +68,7 @@ const BoardgameForm = (): React.ReactElement => {
     !newBoardgame.briefDescription;
 
   return (
-    <BoardgameFormStyled className="form">
+    <BoardgameFormStyled className="form" onSubmit={handleOnSubmit}>
       <div className="form__control-form">
         <label htmlFor="title">Title:</label>
         <input
@@ -140,7 +151,7 @@ const BoardgameForm = (): React.ReactElement => {
         <label htmlFor="image">Image (url):</label>
         <input
           id="image"
-          type="text"
+          type="url"
           onChange={handleOnChange}
           value={newBoardgame.image}
         />
@@ -180,7 +191,12 @@ const BoardgameForm = (): React.ReactElement => {
         <label htmlFor="briefDescription">Description:</label>
         <textarea id="briefDescription" onChange={handleOnChange} />
       </div>
-      <Button text="Add" className="form__button" isDisabled={isDisabled} />
+      <Button
+        text="Add"
+        className="form__button"
+        isDisabled={isDisabled}
+        onClick={() => handleOnSubmit}
+      />
     </BoardgameFormStyled>
   );
 };
