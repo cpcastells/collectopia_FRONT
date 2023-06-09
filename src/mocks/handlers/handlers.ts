@@ -24,7 +24,7 @@ export const handlers = [
     );
   }),
 
-  rest.delete(`${apiUrl}${paths.boardgames}/123`, (_req, res, ctx) => {
+  rest.delete(`${apiUrl}${paths.boardgames}/*`, (_req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json({
@@ -62,6 +62,15 @@ export const errorHandlers = [
       ctx.status(404),
       ctx.json({
         message: "Error: no boardgame was created",
+      })
+    );
+  }),
+
+  rest.delete(`${apiUrl}${paths.boardgames}/*`, (_req, res, ctx) => {
+    return res(
+      ctx.status(404),
+      ctx.json({
+        message: "Boardgame not found!",
       })
     );
   }),

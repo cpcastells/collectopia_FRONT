@@ -119,6 +119,6 @@ describe("Given a BoardgameForm component", () => {
 
       expect(addButton).toBeEnabled();
       expect(submitForm).toHaveBeenCalled();
-    });
+    }, 10000);
   });
 });

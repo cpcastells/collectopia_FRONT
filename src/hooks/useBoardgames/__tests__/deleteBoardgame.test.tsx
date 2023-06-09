@@ -18,9 +18,9 @@ import { errorHandlers } from "../../../mocks/handlers/handlers";
 import { server } from "../../../mocks/server/server";
 
 describe("Given a deleteBoardgame function ", () => {
+  const boardgameId = "123";
   describe("When it is called with a boardgameId", () => {
     test("Then it should dispatch the showModal action", async () => {
-      const boardgameId = "123";
       const dispatch = vi.spyOn(store, "dispatch");
       const modalData = successFeedback.delete;
 
@@ -55,18 +55,17 @@ describe("Given a deleteBoardgame function ", () => {
 
   describe("When it rejects with an error", () => {
     test("Then it should dispatch a showModal action ", async () => {
-      const dispatch = vi.spyOn(store, "dispatch");
-      const modalData = errorFeedback.loadBoardgames;
-
       server.resetHandlers(...errorHandlers);
+      const dispatch = vi.spyOn(store, "dispatch");
+      const modalData = errorFeedback.delete;
 
       const {
         result: {
-          current: { getBoardgames },
+          current: { deleteBoardgame },
         },
       } = renderHook(() => useBoardgames(), { wrapper: wrapper });
 
-      const result = await getBoardgames();
+      const result = await deleteBoardgame(boardgameId);
 
       expect(result).toBe(undefined);
       expect(dispatch).toHaveBeenCalledWith(showModalActionCreator(modalData));
