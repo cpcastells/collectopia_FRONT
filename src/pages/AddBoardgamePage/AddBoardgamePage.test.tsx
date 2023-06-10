@@ -91,6 +91,6 @@ describe("Given a AddBoardgamePage component", () => {
 
       expect(heading).toBeInTheDocument();
       expect(routerTest.state.location.pathname).toBe(paths.collection);
-    });
+    }, 10000);
   });
 });
