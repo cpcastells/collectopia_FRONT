@@ -14,6 +14,7 @@ describe("Given a addBoardgame reducer", () => {
       const expectedTitle = "Catan";
       const currentBoardgameState: BoardgamesApiResponse = {
         boardgames: boardGamesMock,
+        stack: 5,
       };
       const newUserBoardgame = newBoardgameMock;
 
