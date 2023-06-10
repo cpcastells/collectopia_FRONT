@@ -1,7 +1,10 @@
 import Button from "../Button/Button";
 import loadMore from "../../assets/icons/button-load-more.svg";
+interface PaginationProps {
+  onClick: () => void;
+}
 
-const Pagination = (): React.ReactElement => {
+const Pagination = ({ onClick }: PaginationProps): React.ReactElement => {
   return (
     <Button
       url={loadMore}
@@ -9,6 +12,7 @@ const Pagination = (): React.ReactElement => {
       height="89"
       width="121"
       className="collection-load"
+      onClick={onClick}
     />
   );
 };
