@@ -17,6 +17,7 @@ describe("Given a hideModal reducer", () => {
           isSuccess: false,
           icon: "",
         },
+        filter: "",
       };
 
       const newUiState = uiReducer(currentUiState, hideModalActionCreator());

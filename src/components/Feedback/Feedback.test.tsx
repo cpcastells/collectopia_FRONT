@@ -88,6 +88,7 @@ describe("Given a Feedback component", () => {
             isSuccess: false,
             icon: "",
           },
+          filter: "",
         },
       });
 
