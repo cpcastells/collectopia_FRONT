@@ -8,6 +8,7 @@ export const showStateStructureMock: UiStateStructure = {
     isError: false,
     isSuccess: false,
   },
+  filter: "",
 };
 
 export const hideStateStructureMock: UiStateStructure = {
@@ -18,6 +19,7 @@ export const hideStateStructureMock: UiStateStructure = {
     isError: false,
     isSuccess: false,
   },
+  filter: "",
 };
 
 export const initialUiStateMock: UiStateStructure = {
@@ -30,6 +32,7 @@ export const initialUiStateMock: UiStateStructure = {
     isSuccess: false,
     icon: "",
   },
+  filter: "",
 };
 
 export const modalFeedbackMock: ModalDataStructure = {
