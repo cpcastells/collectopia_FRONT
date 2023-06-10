@@ -22,6 +22,7 @@ describe("Given a showModal reducer", () => {
           isSuccess: false,
           icon: "icon",
         },
+        filter: "",
       };
 
       const newUiState = uiReducer(

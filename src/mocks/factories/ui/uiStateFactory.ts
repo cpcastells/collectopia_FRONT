@@ -11,6 +11,7 @@ const StateStructureMockFactory = Factory.define<UiStateStructure>(() => ({
     isSuccess: false,
     icon: "",
   },
+  filter: "",
 }));
 
 export const createStateStructureMock = (

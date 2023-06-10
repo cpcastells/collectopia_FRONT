@@ -11,6 +11,7 @@ const initialUiState: UiStateStructure = {
     secondMessage: "",
     icon: "",
   },
+  filter: "",
 };
 
 const uiSlice = createSlice({
@@ -36,6 +37,13 @@ const uiSlice = createSlice({
       ...currentUiState,
       modalData: initialUiState.modalData,
     }),
+    addFilter: (
+      currentUiState: UiStateStructure,
+      action: PayloadAction<string>
+    ): UiStateStructure => ({
+      ...currentUiState,
+      filter: action.payload,
+    }),
   },
 });
 
@@ -44,5 +52,6 @@ export const {
   hideLoading: hideLoadingActionCreator,
   showModal: showModalActionCreator,
   hideModal: hideModalActionCreator,
+  addFilter: addFilterActionCreator,
 } = uiSlice.actions;
 export const uiReducer = uiSlice.reducer;
