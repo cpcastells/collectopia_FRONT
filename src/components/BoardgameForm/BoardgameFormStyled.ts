@@ -16,7 +16,8 @@ const BoardgameFormStyled = styled.form`
       font-family: ${(props) => props.theme.fonts.form};
       color: ${(props) => props.theme.colors.background};
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      padding: 16px;
+      padding: 5px 5px 5px 12px;
+      font-size: 1.25rem;
     }
 
     &__control-form {

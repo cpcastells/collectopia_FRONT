@@ -3,6 +3,7 @@ import { BoardgameStructure, BoardgamesApiResponse } from "./types";
 
 export const initialBoardgamesState: BoardgamesApiResponse = {
   boardgames: [],
+  stack: 5,
 };
 
 const boardgameSlice = createSlice({
@@ -30,6 +31,10 @@ const boardgameSlice = createSlice({
       ...currentBoardgameState,
       boardgames: [...currentBoardgameState.boardgames, action.payload],
     }),
+    loadAdditionalStack: (currentBoardgameState): BoardgamesApiResponse => ({
+      ...currentBoardgameState,
+      stack: currentBoardgameState.stack + 5,
+    }),
   },
 });
 
@@ -37,5 +42,6 @@ export const {
   loadBoardgames: loadBoardgamesActionCreator,
   removeBoardgame: removeBoardgameActionCreator,
   addBoardgame: addBoardgameActionCreator,
+  loadAdditionalStack: loadAdditionalStackActionCreator,
 } = boardgameSlice.actions;
 export const boardgamesReducer = boardgameSlice.reducer;
