@@ -24,7 +24,7 @@ describe("Given a BoardgamesList component", () => {
       const gameTitle = boardGamesMock[0].title;
 
       renderWithProviders(<CollectionPage />, {
-        boardgameStore: { boardgames: boardGamesMock },
+        boardgameStore: { boardgames: boardGamesMock, stack: 5 },
       });
 
       const deleteButtons = screen.getAllByRole("button", { name: /delete/i });

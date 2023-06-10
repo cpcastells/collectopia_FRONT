@@ -10,7 +10,10 @@ describe("Given a loadBoardgames reducer", () => {
     test("Then it should return that collection of boardgames", () => {
       const currentBoardgameState = initialBoardgamesState;
       const newBoardgameState = boardgamesFactory.buildList(2);
-      const expectedBoardgameState = { boardgames: newBoardgameState };
+      const expectedBoardgameState = {
+        boardgames: newBoardgameState,
+        stack: 5,
+      };
 
       const loadBoardgamesAction =
         loadBoardgamesActionCreator(newBoardgameState);

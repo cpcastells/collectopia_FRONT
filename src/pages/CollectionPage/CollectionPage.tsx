@@ -1,14 +1,17 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/index.js";
 import CollectionPageStyled from "./CollectionPageStyled.js";
-import { loadBoardgamesActionCreator } from "../../store/boardgames/boardgameSlice.js";
+import {
+  loadAdditionalStackActionCreator,
+  loadBoardgamesActionCreator,
+} from "../../store/boardgames/boardgameSlice.js";
 import BoardgamesList from "../../components/BoardgamesList/BoardgamesList.js";
 import useBoardgames from "../../hooks/useBoardgames/useBoardgames.js";
 import Pagination from "../../components/Pagination/Pagination.js";
 
 const CollectionPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const boardgames = useAppSelector((state) => state.boardgameStore);
+  const { boardgames } = useAppSelector((state) => state.boardgameStore);
   const { getBoardgames } = useBoardgames();
 
   useEffect(() => {
@@ -31,11 +34,15 @@ const CollectionPage = (): React.ReactElement => {
     })();
   }, [dispatch, getBoardgames]);
 
+  const handleOnLoadMore = () => {
+    dispatch(loadAdditionalStackActionCreator());
+  };
+
   return (
     <CollectionPageStyled>
       <h2 className="collection-title">My collection</h2>
-      <BoardgamesList boardgames={boardgames.boardgames} />
-      <Pagination />
+      <BoardgamesList boardgames={boardgames} />
+      <Pagination onClick={handleOnLoadMore} />
     </CollectionPageStyled>
   );
 };

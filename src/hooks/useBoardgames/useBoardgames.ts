@@ -19,6 +19,7 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 const useBoardgames = () => {
   const { token } = useAppSelector((state) => state.userStore);
+  const { stack } = useAppSelector((state) => state.boardgameStore);
   const dispatch = useAppDispatch();
 
   const getBoardgames = useCallback(async (): Promise<
@@ -28,7 +29,7 @@ const useBoardgames = () => {
       const {
         data: { boardgames },
       } = await axios.get<BoardgamesApiResponse>(
-        `${apiUrl}${paths.boardgames}`,
+        `${apiUrl}${paths.boardgames}?limit=${stack}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -42,7 +43,7 @@ const useBoardgames = () => {
 
       dispatch(hideLoadingActionCreator());
     }
-  }, [dispatch, token]);
+  }, [dispatch, stack, token]);
 
   const deleteBoardgame = async (boargameId: string) => {
     try {
