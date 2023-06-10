@@ -8,6 +8,7 @@ import {
 import BoardgamesList from "../../components/BoardgamesList/BoardgamesList.js";
 import useBoardgames from "../../hooks/useBoardgames/useBoardgames.js";
 import Pagination from "../../components/Pagination/Pagination.js";
+import Filter from "../../components/Filter/Filter.js";
 
 const CollectionPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -41,6 +42,7 @@ const CollectionPage = (): React.ReactElement => {
   return (
     <CollectionPageStyled>
       <h2 className="collection-title">My collection</h2>
+      <Filter />
       <BoardgamesList boardgames={boardgames} />
       <Pagination onClick={handleOnLoadMore} />
     </CollectionPageStyled>
