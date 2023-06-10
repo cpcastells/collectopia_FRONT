@@ -10,4 +10,5 @@ export interface ModalDataStructure {
 export interface UiStateStructure {
   isLoading: boolean;
   modalData: ModalDataStructure;
+  filter: string;
 }
