@@ -6,7 +6,7 @@ const FilterStyled = styled.form`
       width: 280px;
       height: 48px;
       border-radius: 8px;
-      background-color: ${(props) => props.theme.colors["medium-green"]};
+      background-color: #0e5e6b;
       font-family: ${(props) => props.theme.fonts.form};
       color: ${(props) => props.theme.colors.background};
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
