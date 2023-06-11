@@ -40,9 +40,9 @@ const useBoardgames = () => {
 
       return boardgames;
     } catch (error) {
-      dispatch(showModalActionCreator(errorFeedback.loadBoardgames));
-
       dispatch(hideLoadingActionCreator());
+
+      dispatch(showModalActionCreator(errorFeedback.loadBoardgames));
     }
   }, [dispatch, filter, stack, token]);
 

@@ -1,4 +1,4 @@
-import { render, renderHook, screen } from "@testing-library/react";
+import { act, render, renderHook, screen } from "@testing-library/react";
 import { errorFeedback, successFeedback } from "../../modalData";
 import useBoardgames from "../useBoardgames";
 import { wrapper } from "../../../utils/testUtils";
@@ -30,7 +30,9 @@ describe("Given a deleteBoardgame function ", () => {
         },
       } = renderHook(() => useBoardgames(), { wrapper: wrapper });
 
-      await deleteBoardgame(boardgameId);
+      await act(async () => {
+        await deleteBoardgame(boardgameId);
+      });
 
       const routes: RouteObject[] = [{ path: "/", element: <Layout /> }];
 
@@ -65,10 +67,15 @@ describe("Given a deleteBoardgame function ", () => {
         },
       } = renderHook(() => useBoardgames(), { wrapper: wrapper });
 
-      const result = await deleteBoardgame(boardgameId);
+      await act(async () => {
+        const result = await deleteBoardgame(boardgameId);
 
-      expect(result).toBe(undefined);
-      expect(dispatch).toHaveBeenCalledWith(showModalActionCreator(modalData));
+        expect(result).toBe(undefined);
+
+        expect(dispatch).toHaveBeenCalledWith(
+          showModalActionCreator(modalData)
+        );
+      });
     });
   });
 });

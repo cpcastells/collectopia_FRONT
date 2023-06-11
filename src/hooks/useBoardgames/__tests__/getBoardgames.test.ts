@@ -1,4 +1,4 @@
-import { renderHook } from "@testing-library/react";
+import { act, renderHook } from "@testing-library/react";
 import useBoardgames from "../useBoardgames";
 import { boardGamesMock } from "../../../mocks/boardgames/boardgamesMocks";
 import { vi } from "vitest";
@@ -24,9 +24,11 @@ describe("Given a getBoardgames function", () => {
         },
       } = renderHook(() => useBoardgames(), { wrapper: wrapper });
 
-      const boardgames = await getBoardgames();
+      await act(async () => {
+        const boardgames = await getBoardgames();
 
-      expect(boardgames).toStrictEqual(expectedBoardgames);
+        expect(boardgames).toStrictEqual(expectedBoardgames);
+      });
     });
   });
 
@@ -43,10 +45,14 @@ describe("Given a getBoardgames function", () => {
         },
       } = renderHook(() => useBoardgames(), { wrapper: wrapper });
 
-      const result = await getBoardgames();
+      await act(async () => {
+        const result = await getBoardgames();
 
-      expect(result).toBe(undefined);
-      expect(dispatch).toHaveBeenCalledWith(showModalActionCreator(modalData));
+        expect(result).toBe(undefined);
+        expect(dispatch).toHaveBeenCalledWith(
+          showModalActionCreator(modalData)
+        );
+      });
     });
   });
 });
