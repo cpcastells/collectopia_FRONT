@@ -128,7 +128,7 @@ const BoardgameForm = ({
         </select>
       </div>
       <div className="form__control-form">
-        <label htmlFor="mechanics">Mechanics</label>
+        <label htmlFor="mechanics">Mechanics:</label>
         <select
           id="mechanics"
           className="form__select"

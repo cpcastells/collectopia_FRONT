@@ -35,4 +35,22 @@ describe("Given a CollectionPage page", () => {
       expect(heading).toBeInTheDocument();
     });
   });
+
+  describe("When the user click on the option 'filler' of the select filter", () => {
+    test("Then it should render filtered boardgames", async () => {
+      const expectedAriaText = "filter by category";
+      const choosenFilter = "War Game";
+
+      renderWithProviders(<CollectionPage />, {
+        boardgameStore: { boardgames: boardGamesMock, stack: 5 },
+      });
+
+      const heading = screen.getByRole("heading", { name: "Rising Sun" });
+
+      const filterSelect = screen.getByLabelText(expectedAriaText);
+      await userEvent.selectOptions(filterSelect, [choosenFilter]);
+
+      expect(heading).toBeInTheDocument();
+    });
+  });
 });

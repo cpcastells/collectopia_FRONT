@@ -1,4 +1,4 @@
-import { render, renderHook, screen } from "@testing-library/react";
+import { act, render, renderHook, screen } from "@testing-library/react";
 import { store } from "../../../store";
 import { errorFeedback, successFeedback } from "../../modalData";
 import useBoardgames from "../useBoardgames";
@@ -32,7 +32,9 @@ describe("Given a addBoargame function ", () => {
         },
       } = renderHook(() => useBoardgames(), { wrapper: wrapper });
 
-      await addBoardgame(boardgame);
+      await act(async () => {
+        await addBoardgame(boardgame);
+      });
 
       const routes: RouteObject[] = [{ path: "/", element: <Layout /> }];
 
@@ -68,10 +70,15 @@ describe("Given a addBoargame function ", () => {
         },
       } = renderHook(() => useBoardgames(), { wrapper: wrapper });
 
-      const result = await addBoardgame(boardgame);
+      await act(async () => {
+        const result = await addBoardgame(boardgame);
 
-      expect(result).toBe(undefined);
-      expect(dispatch).toHaveBeenCalledWith(showModalActionCreator(modalData));
+        expect(result).toBe(undefined);
+
+        expect(dispatch).toHaveBeenCalledWith(
+          showModalActionCreator(modalData)
+        );
+      });
     });
   });
 });

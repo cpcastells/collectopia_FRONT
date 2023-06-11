@@ -6,7 +6,7 @@ import {
   showLoadingActionCreator,
   showModalActionCreator,
 } from "../../store/ui/uiSlice";
-import { errorFeedback, successFeedback } from "../modalData";
+import { errorFeedback } from "../modalData";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -20,8 +20,6 @@ const useUser = () => {
       const {
         data: { token },
       } = await axios.post(`${apiUrl}user/login`, userCredentials);
-
-      dispatch(showModalActionCreator(successFeedback.credentials));
 
       dispatch(showLoadingActionCreator());
 

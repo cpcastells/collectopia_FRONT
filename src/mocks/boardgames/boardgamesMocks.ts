@@ -9,7 +9,7 @@ export const boardGamesMock: BoardgameStructure[] = [
     title: "Rising Sun",
     image:
       "https://media.discordapp.net/attachments/1114204200885301331/1114204323862286496/Rising_sun.webp?width=662&height=662",
-    category: "Wargame",
+    category: "War game",
     mechanics: "Negotiation",
     duration: 120,
     briefDescription:
