@@ -1,9 +1,22 @@
+import { useAppDispatch } from "../../store";
+import { addFilterActionCreator } from "../../store/ui/uiSlice";
 import FilterStyled from "./FilterStyled";
 
 const Filter = (): React.ReactElement => {
+  const dispatch = useAppDispatch();
+
+  const handleOnFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const category = event.target.value;
+    dispatch(addFilterActionCreator(category));
+  };
+
   return (
     <FilterStyled className="filter">
-      <select className="filter__select" aria-label="filter by category">
+      <select
+        className="filter__select"
+        aria-label="filter by category"
+        onChange={handleOnFilter}
+      >
         <option value="">Filter by Category</option>
         <option value="Eurogame">Eurogame</option>
         <option value="Filler">Filler</option>
