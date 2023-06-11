@@ -18,19 +18,21 @@ const CollectionPage = (): React.ReactElement => {
   useEffect(() => {
     (async () => {
       const boardgames = await getBoardgames();
+
       if (boardgames) {
         dispatch(loadBoardgamesActionCreator(boardgames));
+        if (boardgames.length > 0) {
+          const firstImage = boardgames[0].image;
 
-        const firstImage = boardgames[0].image;
+          const preconnectElement = document.createElement("link");
+          preconnectElement.rel = "preload";
+          preconnectElement.as = "image";
+          preconnectElement.href = firstImage;
 
-        const preconnectElement = await document.createElement("link");
-        preconnectElement.rel = "preload";
-        preconnectElement.as = "image";
-        preconnectElement.href = firstImage;
-
-        const parent = document.head;
-        const firstChild = document.head.firstChild;
-        parent.insertBefore(preconnectElement, firstChild);
+          const parent = document.head;
+          const firstChild = document.head.firstChild;
+          parent.insertBefore(preconnectElement, firstChild);
+        }
       }
     })();
   }, [dispatch, getBoardgames]);
