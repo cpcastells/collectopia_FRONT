@@ -25,6 +25,7 @@ const useBoardgames = () => {
   const getBoardgames = useCallback(
     async (filter?: string): Promise<BoardgameApiResponse | undefined> => {
       try {
+        dispatch(showLoadingActionCreator());
         const {
           data: { boardgames, totalBoardgames },
         } = await axios.get<BoardgameApiResponse>(

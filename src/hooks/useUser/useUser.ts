@@ -17,11 +17,10 @@ const useUser = () => {
     userCredentials: UserCredentialsStructure
   ): Promise<string | undefined> => {
     try {
+      dispatch(showLoadingActionCreator());
       const {
         data: { token },
       } = await axios.post(`${apiUrl}user/login`, userCredentials);
-
-      dispatch(showLoadingActionCreator());
 
       return token;
     } catch (error) {
