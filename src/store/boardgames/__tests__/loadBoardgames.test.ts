@@ -6,13 +6,14 @@ import {
 } from "../boardgameSlice";
 
 describe("Given a loadBoardgames reducer", () => {
-  describe("When it receives an empty collection of boardgames and a collection of boardgames as a payload", () => {
+  describe("When it receives the current collection of boardgames and a collection of boardgames as a payload", () => {
     test("Then it should return that collection of boardgames", () => {
       const currentBoardgameState = initialBoardgamesState;
       const newBoardgameState = boardgamesFactory.buildList(2);
       const expectedBoardgameState = {
         boardgames: newBoardgameState,
         stack: 5,
+        boardgame: initialBoardgamesState.boardgame,
       };
 
       const loadBoardgamesAction =
