@@ -42,6 +42,15 @@ export const handlers = [
       })
     );
   }),
+
+  rest.get(`${apiUrl}${paths.boardgames}/*`, (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        boardgame: boardGamesMock[0],
+      })
+    );
+  }),
 ];
 
 export const errorHandlers = [
@@ -68,6 +77,15 @@ export const errorHandlers = [
   }),
 
   rest.delete(`${apiUrl}${paths.boardgames}/*`, (_req, res, ctx) => {
+    return res(
+      ctx.status(404),
+      ctx.json({
+        message: "Boardgame not found!",
+      })
+    );
+  }),
+
+  rest.get(`${apiUrl}${paths.boardgames}/*`, (_req, res, ctx) => {
     return res(
       ctx.status(404),
       ctx.json({
