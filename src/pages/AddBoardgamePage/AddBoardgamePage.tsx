@@ -6,6 +6,7 @@ import { addBoardgameActionCreator } from "../../store/boardgames/boardgameSlice
 import { BoardgameBaseStructure } from "../../store/boardgames/types";
 import AddBoardgamePageStyled from "./AddBoardgamePageStyled";
 import paths from "../../routers/paths";
+import { resetFilterActionCreator } from "../../store/ui/uiSlice";
 
 const AddBoardgamePage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -17,6 +18,7 @@ const AddBoardgamePage = (): React.ReactElement => {
 
     if (newBoardgame) {
       dispatch(addBoardgameActionCreator(newBoardgame.boardgame));
+      dispatch(resetFilterActionCreator());
       navigate(paths.collection);
     }
   };

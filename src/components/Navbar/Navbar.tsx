@@ -9,6 +9,7 @@ import newIcon from "../../assets/icons/new-icon.svg";
 import homeIcon from "../../assets/icons/home-icon.svg";
 import logoutIcon from "../../assets/icons/logout-icon.svg";
 import Button from "../Button/Button";
+import { resetFilterActionCreator } from "../../store/ui/uiSlice";
 
 const Navbar = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -17,6 +18,7 @@ const Navbar = (): React.ReactElement => {
 
   const onLogoutUser = () => {
     dispatch(logoutUserActionCreator());
+    dispatch(resetFilterActionCreator());
     removeLocalStorageItem("token");
     navigate(paths.login);
   };

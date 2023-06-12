@@ -44,6 +44,10 @@ const uiSlice = createSlice({
       ...currentUiState,
       filter: action.payload,
     }),
+    resetFilter: (currentUiState): UiStateStructure => ({
+      ...currentUiState,
+      filter: "",
+    }),
   },
 });
 
@@ -53,5 +57,6 @@ export const {
   showModal: showModalActionCreator,
   hideModal: hideModalActionCreator,
   addFilter: addFilterActionCreator,
+  resetFilter: resetFilterActionCreator,
 } = uiSlice.actions;
 export const uiReducer = uiSlice.reducer;
