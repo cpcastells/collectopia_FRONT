@@ -33,6 +33,7 @@ const Filter = ({ setTotalBoardgames }: FilterProps): React.ReactElement => {
         onChange={handleOnFilter}
       >
         <option value="">Filter by Category</option>
+        <option value="">All categories</option>
         <option value="Eurogame">Eurogame</option>
         <option value="Filler">Filler</option>
         <option value="Legacy">Legacy</option>
