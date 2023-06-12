@@ -1,6 +1,6 @@
 import { act, renderHook } from "@testing-library/react";
 import useBoardgames from "../useBoardgames";
-import { boardGamesMock } from "../../../mocks/boardgames/boardgamesMocks";
+import { apiResponseMock } from "../../../mocks/boardgames/boardgamesMocks";
 import { vi } from "vitest";
 import { wrapper } from "../../../utils/testUtils";
 import { server } from "../../../mocks/server/server";
@@ -15,8 +15,8 @@ beforeEach(() => {
 
 describe("Given a getBoardgames function", () => {
   describe("When it is called", () => {
-    test("Then it should return a collection of boardgames", async () => {
-      const expectedBoardgames = boardGamesMock;
+    test("Then it should return a collection of boardgames and a the total of boardgames", async () => {
+      const expectedResponse = apiResponseMock;
 
       const {
         result: {
@@ -25,9 +25,9 @@ describe("Given a getBoardgames function", () => {
       } = renderHook(() => useBoardgames(), { wrapper: wrapper });
 
       await act(async () => {
-        const boardgames = await getBoardgames();
+        const response = await getBoardgames();
 
-        expect(boardgames).toStrictEqual(expectedBoardgames);
+        expect(response).toStrictEqual(expectedResponse);
       });
     });
   });

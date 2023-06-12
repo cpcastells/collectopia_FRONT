@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { BoardgameStructure, BoardgamesApiResponse } from "./types";
+import { BoardgameStructure, BoardgamesDataStructure } from "./types";
 
-export const initialBoardgamesState: BoardgamesApiResponse = {
+export const initialBoardgamesState: BoardgamesDataStructure = {
   boardgames: [],
   stack: 5,
 };
@@ -18,7 +18,7 @@ const boardgameSlice = createSlice({
     removeBoardgame: (
       currentBoardgameState,
       action: PayloadAction<string>
-    ): BoardgamesApiResponse => ({
+    ): BoardgamesDataStructure => ({
       ...currentBoardgameState,
       boardgames: currentBoardgameState.boardgames.filter(
         (boardgame) => boardgame.id !== action.payload
@@ -31,7 +31,7 @@ const boardgameSlice = createSlice({
       ...currentBoardgameState,
       boardgames: [...currentBoardgameState.boardgames, action.payload],
     }),
-    loadAdditionalStack: (currentBoardgameState): BoardgamesApiResponse => ({
+    loadAdditionalStack: (currentBoardgameState): BoardgamesDataStructure => ({
       ...currentBoardgameState,
       stack: currentBoardgameState.stack + 5,
     }),

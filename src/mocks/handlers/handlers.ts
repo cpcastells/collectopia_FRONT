@@ -20,6 +20,7 @@ export const handlers = [
       ctx.status(200),
       ctx.json({
         boardgames: boardGamesMock,
+        totalBoardgames: boardGamesMock.length,
       })
     );
   }),
@@ -71,6 +72,18 @@ export const errorHandlers = [
       ctx.status(404),
       ctx.json({
         message: "Boardgame not found!",
+      })
+    );
+  }),
+];
+
+export const PaginationHandlers = [
+  rest.get(`${apiUrl}${paths.boardgames}`, (_req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        boardgames: boardGamesMock,
+        totalBoardgames: 7,
       })
     );
   }),
