@@ -27,6 +27,6 @@ export interface BoardgameApiResponse {
   totalBoardgames: number;
 }
 
-export interface BoardgameCreateResponse {
+export interface BoardgameResponse {
   boardgame: BoardgameStructure;
 }
