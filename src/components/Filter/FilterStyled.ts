@@ -13,6 +13,7 @@ const FilterStyled = styled.form`
       padding: 5px 5px 5px 12px;
       font-size: 1.25rem;
       text-align-last: center;
+      border-right: 10px solid transparent;
     }
   }
 `;

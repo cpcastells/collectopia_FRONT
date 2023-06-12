@@ -1,6 +1,5 @@
 import useBoardgames from "../../hooks/useBoardgames/useBoardgames";
 import { useAppDispatch } from "../../store";
-import { loadBoardgamesActionCreator } from "../../store/boardgames/boardgameSlice";
 import { addFilterActionCreator } from "../../store/ui/uiSlice";
 import FilterStyled from "./FilterStyled";
 
@@ -20,11 +19,9 @@ const Filter = ({ setTotalBoardgames }: FilterProps): React.ReactElement => {
 
     const response = await getBoardgames(filter);
     if (response) {
-      const { boardgames, totalBoardgames } = response;
+      const { totalBoardgames } = response;
 
       setTotalBoardgames(totalBoardgames);
-
-      dispatch(loadBoardgamesActionCreator(boardgames));
     }
   };
 
