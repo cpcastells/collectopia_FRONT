@@ -4,7 +4,8 @@ import paths from "../../routers/paths";
 import {
   BoardgameApiResponse,
   BoardgameBaseStructure,
-  BoardgameCreateResponse,
+  BoardgameResponse,
+  BoardgameStructure,
 } from "../../store/boardgames/types";
 import { useAppDispatch, useAppSelector } from "../../store";
 import {
@@ -67,11 +68,11 @@ const useBoardgames = () => {
 
   const addBoardgame = async (
     boardgame: BoardgameBaseStructure
-  ): Promise<BoardgameCreateResponse | undefined> => {
+  ): Promise<BoardgameResponse | undefined> => {
     try {
       dispatch(showLoadingActionCreator());
 
-      const { data } = await axios.post<BoardgameCreateResponse>(
+      const { data } = await axios.post<BoardgameResponse>(
         `${apiUrl}${paths.createEndpoint}`,
         boardgame,
         {
@@ -90,7 +91,28 @@ const useBoardgames = () => {
     }
   };
 
-  return { getBoardgames, deleteBoardgame, addBoardgame };
+  const getBoardgameById = async (
+    boardgameId: string
+  ): Promise<BoardgameStructure | undefined> => {
+    try {
+      dispatch(showLoadingActionCreator());
+
+      const {
+        data: { boardgame },
+      } = await axios.get<BoardgameResponse>(
+        `${apiUrl}${paths.boardgames}/${boardgameId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      return boardgame;
+    } catch (error) {
+      dispatch(hideLoadingActionCreator());
+    }
+  };
+
+  return { getBoardgames, deleteBoardgame, addBoardgame, getBoardgameById };
 };
 
 export default useBoardgames;
