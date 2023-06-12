@@ -109,6 +109,8 @@ const useBoardgames = () => {
       return boardgame;
     } catch (error) {
       dispatch(hideLoadingActionCreator());
+
+      dispatch(showModalActionCreator(errorFeedback.loadBoardgames));
     }
   };
 
