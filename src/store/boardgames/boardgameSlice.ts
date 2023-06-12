@@ -4,6 +4,23 @@ import { BoardgameStructure, BoardgamesDataStructure } from "./types";
 export const initialBoardgamesState: BoardgamesDataStructure = {
   boardgames: [],
   stack: 5,
+  boardgame: {
+    players: {
+      min: 0,
+      max: 0,
+    },
+    title: "",
+    image: "",
+    category: "",
+    mechanics: "",
+    duration: 0,
+    briefDescription: "",
+    price: 0,
+    author: "",
+    releaseYear: 0,
+    user: "",
+    id: "",
+  },
 };
 
 const boardgameSlice = createSlice({
@@ -35,6 +52,13 @@ const boardgameSlice = createSlice({
       ...currentBoardgameState,
       stack: currentBoardgameState.stack + 5,
     }),
+    loadBoardgameById: (
+      currentBoardgameState,
+      action: PayloadAction<BoardgameStructure>
+    ): BoardgamesDataStructure => ({
+      ...currentBoardgameState,
+      boardgame: action.payload,
+    }),
   },
 });
 
@@ -43,5 +67,6 @@ export const {
   removeBoardgame: removeBoardgameActionCreator,
   addBoardgame: addBoardgameActionCreator,
   loadAdditionalStack: loadAdditionalStackActionCreator,
+  loadBoardgameById: loadBoardgameByIdActionCreator,
 } = boardgameSlice.actions;
 export const boardgamesReducer = boardgameSlice.reducer;
