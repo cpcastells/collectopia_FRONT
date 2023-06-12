@@ -17,10 +17,15 @@ export interface BoardgameBaseStructure {
 export interface BoardgameStructure extends BoardgameBaseStructure {
   id: string;
 }
-export interface BoardgamesApiResponse {
+export interface BoardgamesDataStructure {
   boardgames: BoardgameStructure[];
   stack: number;
 }
+export interface BoardgameApiResponse {
+  boardgames: BoardgameStructure[];
+  totalBoardgames: number;
+}
+
 export interface BoardgameCreateResponse {
   boardgame: BoardgameStructure;
 }

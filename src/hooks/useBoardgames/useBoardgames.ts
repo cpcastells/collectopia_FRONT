@@ -2,10 +2,9 @@ import axios from "axios";
 import { useCallback } from "react";
 import paths from "../../routers/paths";
 import {
+  BoardgameApiResponse,
   BoardgameBaseStructure,
   BoardgameCreateResponse,
-  BoardgameStructure,
-  BoardgamesApiResponse,
 } from "../../store/boardgames/types";
 import { useAppDispatch, useAppSelector } from "../../store";
 import {
@@ -20,31 +19,32 @@ const apiUrl = import.meta.env.VITE_API_URL;
 const useBoardgames = () => {
   const { token } = useAppSelector((state) => state.userStore);
   const { stack } = useAppSelector((state) => state.boardgameStore);
-  const { filter } = useAppSelector((state) => state.uiStore);
+
   const dispatch = useAppDispatch();
 
-  const getBoardgames = useCallback(async (): Promise<
-    BoardgameStructure[] | undefined
-  > => {
-    try {
-      const {
-        data: { boardgames },
-      } = await axios.get<BoardgamesApiResponse>(
-        `${apiUrl}${paths.boardgames}?limit=${stack}&filter=${filter}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+  const getBoardgames = useCallback(
+    async (filter?: string): Promise<BoardgameApiResponse | undefined> => {
+      try {
+        const {
+          data: { boardgames, totalBoardgames },
+        } = await axios.get<BoardgameApiResponse>(
+          `${apiUrl}${paths.boardgames}?limit=${stack}&filter=${filter}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
-      dispatch(hideLoadingActionCreator());
+        dispatch(hideLoadingActionCreator());
 
-      return boardgames;
-    } catch (error) {
-      dispatch(hideLoadingActionCreator());
+        return { boardgames, totalBoardgames };
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
 
-      dispatch(showModalActionCreator(errorFeedback.loadBoardgames));
-    }
-  }, [dispatch, filter, stack, token]);
+        dispatch(showModalActionCreator(errorFeedback.loadBoardgames));
+      }
+    },
+    [dispatch, stack, token]
+  );
 
   const deleteBoardgame = async (boargameId: string) => {
     try {
