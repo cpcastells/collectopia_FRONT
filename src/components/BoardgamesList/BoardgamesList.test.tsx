@@ -4,6 +4,7 @@ import { renderWithProviders } from "../../utils/testUtils";
 import BoardgamesList from "./BoardgamesList";
 import { boardGamesMock } from "../../mocks/boardgames/boardgamesMocks";
 import CollectionPage from "../../pages/CollectionPage/CollectionPage";
+import { initialBoardgamesState } from "../../store/boardgames/boardgameSlice";
 
 describe("Given a BoardgamesList component", () => {
   describe("When it is rendered", () => {
@@ -24,7 +25,11 @@ describe("Given a BoardgamesList component", () => {
       const gameTitle = boardGamesMock[0].title;
 
       renderWithProviders(<CollectionPage />, {
-        boardgameStore: { boardgames: boardGamesMock, stack: 5 },
+        boardgameStore: {
+          boardgames: boardGamesMock,
+          stack: 5,
+          boardgame: initialBoardgamesState.boardgame,
+        },
       });
 
       const deleteButtons = screen.getAllByRole("button", { name: /delete/i });

@@ -53,7 +53,7 @@ describe("Given a CollectionPage page", () => {
       const heading = screen.getByRole("heading", {
         name: boardGamesMock[5].title,
       });
-      screen.debug();
+
       const button = screen.getByAltText("load more button");
 
       await userEvent.click(button);
@@ -68,7 +68,11 @@ describe("Given a CollectionPage page", () => {
       const choosenFilter = "War Game";
 
       renderWithProviders(<CollectionPage />, {
-        boardgameStore: { boardgames: boardGamesMock, stack: 5 },
+        boardgameStore: {
+          boardgames: boardGamesMock,
+          stack: 5,
+          boardgame: boardGamesMock[0],
+        },
       });
 
       const heading = screen.getByRole("heading", { name: "Rising Sun" });
