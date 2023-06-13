@@ -10,6 +10,7 @@ import BoardgamesList from "../../components/BoardgamesList/BoardgamesList.js";
 import useBoardgames from "../../hooks/useBoardgames/useBoardgames.js";
 import Pagination from "../../components/Pagination/Pagination.js";
 import Filter from "../../components/Filter/Filter.js";
+import noBoardgamesLogo from "../../assets/icons/not-boardgames-back.svg";
 
 const CollectionPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -51,10 +52,24 @@ const CollectionPage = (): React.ReactElement => {
   };
 
   return (
-    <CollectionPageStyled>
-      <h2 className="collection-title">My collection</h2>
+    <CollectionPageStyled className="collection">
+      <h2 className="collection__title">My collection</h2>
       <Filter />
       <BoardgamesList boardgames={boardgames} />
+      {totalBoardgames === 0 && (
+        <div className="collection__message-container">
+          <h3 className="collection__message-title">Oops!</h3>
+          <span className="collection__message-subtitle">
+            No games, No play
+          </span>
+          <img
+            src={noBoardgamesLogo}
+            alt="no games found"
+            width={210}
+            height={75}
+          />
+        </div>
+      )}
       {boardgames.length < totalBoardgames && (
         <Pagination onClick={handleOnLoadMore} />
       )}
