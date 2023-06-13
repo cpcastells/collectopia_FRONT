@@ -5,10 +5,10 @@ import paths from "../paths";
 import {
   LazyAddBoardgamePage,
   LazyCollectionPage,
+  LazyDetailPage,
   LazyLoginPage,
 } from "../lazyComponents/lazyComponents";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
-import DetailPage from "../../pages/DetailPage/DetailPage";
 
 const routes: RouteObject[] = [
   {
@@ -42,7 +42,11 @@ const routes: RouteObject[] = [
       },
       {
         path: `${paths.details}${paths.id}`,
-        element: <DetailPage />,
+        element: (
+          <Suspense>
+            <LazyDetailPage />
+          </Suspense>
+        ),
       },
       { path: paths.notFound, element: <NotFoundPage /> },
     ],

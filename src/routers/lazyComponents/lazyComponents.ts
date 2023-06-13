@@ -11,3 +11,7 @@ export const LazyCollectionPage = lazy(
 export const LazyAddBoardgamePage = lazy(
   () => import("../../pages/AddBoardgamePage/AddBoardgamePage")
 );
+
+export const LazyDetailPage = lazy(
+  () => import("../../pages/DetailPage/DetailPage")
+);
