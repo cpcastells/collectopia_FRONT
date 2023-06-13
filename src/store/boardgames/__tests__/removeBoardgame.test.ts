@@ -12,6 +12,7 @@ describe("Given a removeBoardgame reducer", () => {
         boardgames: boardGamesMock,
         stack: 5,
         boardgame: boardgamesFactory.build(),
+        totalBoardgames: 10,
       };
       const id = boardGamesMock[0].id;
 
