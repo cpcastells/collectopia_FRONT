@@ -15,6 +15,7 @@ describe("Given a loadBoardgameById reducer", () => {
         boardgames: boardGamesMock,
         stack: 5,
         boardgame: currentBoardgame,
+        totalBoardgames: 10,
       };
 
       const loadBoardgameByIdAction =

@@ -21,6 +21,7 @@ export interface BoardgamesDataStructure {
   boardgames: BoardgameStructure[];
   stack: number;
   boardgame: BoardgameStructure;
+  totalBoardgames: number;
 }
 export interface BoardgameApiResponse {
   boardgames: BoardgameStructure[];

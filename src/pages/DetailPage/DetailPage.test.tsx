@@ -16,6 +16,7 @@ describe("Given a DetailPage ID", () => {
           boardgames: boardGamesMock,
           stack: 5,
           boardgame: boardGamesMock[0],
+          totalBoardgames: 10,
         },
       });
 
@@ -35,6 +36,7 @@ describe("Given a DetailPage ID", () => {
           boardgames: boardGamesMock,
           stack: 5,
           boardgame: partialBoardgameMock,
+          totalBoardgames: 10,
         },
       });
 

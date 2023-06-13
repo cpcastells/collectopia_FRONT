@@ -14,6 +14,7 @@ describe("Given a loadBoardgames reducer", () => {
         boardgames: newBoardgameState,
         stack: 5,
         boardgame: initialBoardgamesState.boardgame,
+        totalBoardgames: 0,
       };
 
       const loadBoardgamesAction =

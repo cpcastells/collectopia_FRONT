@@ -29,6 +29,7 @@ describe("Given a BoardgamesList component", () => {
           boardgames: boardGamesMock,
           stack: 5,
           boardgame: initialBoardgamesState.boardgame,
+          totalBoardgames: 10,
         },
       });
 

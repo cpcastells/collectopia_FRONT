@@ -1,6 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { renderWithProviders } from "../../utils/testUtils";
+import {
+  renderWithProvidersWithoutRouter,
+  renderWithProviders,
+  wrapWithRouter,
+} from "../../utils/testUtils";
 import CollectionPage from "./CollectionPage";
 import { boardGamesMock } from "../../mocks/boardgames/boardgamesMocks";
 import { server } from "../../mocks/server/server";
@@ -11,17 +15,13 @@ import {
   RouterProvider,
   createMemoryRouter,
 } from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from "../../store";
-import { ThemeProvider } from "styled-components";
-import { theme } from "../../styles/theme/theme";
 
 describe("Given a CollectionPage page", () => {
   describe("When it is rendered", () => {
     test("Then it should appear a heading with a text 'My collection'", () => {
       const expectedTest = "My collection";
 
-      renderWithProviders(<CollectionPage />);
+      renderWithProvidersWithoutRouter(wrapWithRouter(<CollectionPage />));
 
       const heading = screen.getByRole("heading", {
         level: 2,
@@ -42,13 +42,14 @@ describe("Given a CollectionPage page", () => {
 
       const routerTest = createMemoryRouter(routes);
 
-      render(
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <RouterProvider router={routerTest} />
-          </ThemeProvider>
-        </Provider>
-      );
+      renderWithProvidersWithoutRouter(<RouterProvider router={routerTest} />, {
+        boardgameStore: {
+          boardgames: boardGamesMock,
+          totalBoardgames: 10,
+          boardgame: boardGamesMock[0],
+          stack: 5,
+        },
+      });
 
       const heading = screen.getByRole("heading", {
         name: boardGamesMock[5].title,
@@ -72,6 +73,7 @@ describe("Given a CollectionPage page", () => {
           boardgames: boardGamesMock,
           stack: 5,
           boardgame: boardGamesMock[0],
+          totalBoardgames: 6,
         },
       });
 

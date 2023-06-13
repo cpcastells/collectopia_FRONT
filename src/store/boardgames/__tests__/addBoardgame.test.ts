@@ -18,6 +18,7 @@ describe("Given a addBoardgame reducer", () => {
         boardgames: boardGamesMock,
         stack: 5,
         boardgame: boardgame,
+        totalBoardgames: 10,
       };
       const newUserBoardgame = newBoardgameMock;
 

@@ -1,6 +1,10 @@
 import useBoardgames from "../../hooks/useBoardgames/useBoardgames";
-import { useAppDispatch } from "../../store";
-import { removeBoardgameActionCreator } from "../../store/boardgames/boardgameSlice";
+import { useAppDispatch, useAppSelector } from "../../store";
+import {
+  loadBoardgamesActionCreator,
+  removeBoardgameActionCreator,
+  updateTotalBoardgamesActionCreator,
+} from "../../store/boardgames/boardgameSlice";
 import { BoardgameStructure } from "../../store/boardgames/types";
 import BoardgameCard from "../BoardgameCard/BoardgameCard";
 import BoardgamesListStyled from "./BoardgameListStyled";
@@ -13,13 +17,22 @@ const BoardgamesList = ({
   boardgames,
 }: BoardgamesListProps): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const { deleteBoardgame } = useBoardgames();
+  const { deleteBoardgame, getBoardgames } = useBoardgames();
+  const { filter } = useAppSelector((state) => state.uiStore);
 
-  const handleOnDelete = (id: string): void => {
-    deleteBoardgame(id);
+  const handleOnDelete = async (id: string): Promise<void> => {
+    await deleteBoardgame(id);
     dispatch(removeBoardgameActionCreator(id));
-  };
 
+    const response = await getBoardgames(filter);
+    if (response) {
+      const { boardgames, totalBoardgames } = response;
+
+      dispatch(updateTotalBoardgamesActionCreator(totalBoardgames));
+
+      dispatch(loadBoardgamesActionCreator(boardgames));
+    }
+  };
   return (
     <BoardgamesListStyled>
       {boardgames.map((boardgame, index) => (

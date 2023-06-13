@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/index.js";
 import CollectionPageStyled from "./CollectionPageStyled.js";
 import {
   loadAdditionalStackActionCreator,
   loadBoardgamesActionCreator,
+  updateTotalBoardgamesActionCreator,
 } from "../../store/boardgames/boardgameSlice.js";
 import BoardgamesList from "../../components/BoardgamesList/BoardgamesList.js";
 import useBoardgames from "../../hooks/useBoardgames/useBoardgames.js";
@@ -12,10 +13,11 @@ import Filter from "../../components/Filter/Filter.js";
 
 const CollectionPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const { boardgames } = useAppSelector((state) => state.boardgameStore);
+  const { boardgames, totalBoardgames } = useAppSelector(
+    (state) => state.boardgameStore
+  );
   const { filter } = useAppSelector((state) => state.uiStore);
   const { getBoardgames } = useBoardgames();
-  const [totalBoardgames, setTotalBoardgames] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -24,7 +26,7 @@ const CollectionPage = (): React.ReactElement => {
       if (response) {
         const { boardgames, totalBoardgames } = response;
 
-        setTotalBoardgames(totalBoardgames);
+        dispatch(updateTotalBoardgamesActionCreator(totalBoardgames));
 
         dispatch(loadBoardgamesActionCreator(boardgames));
 
@@ -51,9 +53,9 @@ const CollectionPage = (): React.ReactElement => {
   return (
     <CollectionPageStyled>
       <h2 className="collection-title">My collection</h2>
-      <Filter setTotalBoardgames={setTotalBoardgames} />
+      <Filter />
       <BoardgamesList boardgames={boardgames} />
-      {boardgames.length !== totalBoardgames && (
+      {boardgames.length < totalBoardgames && (
         <Pagination onClick={handleOnLoadMore} />
       )}
     </CollectionPageStyled>
