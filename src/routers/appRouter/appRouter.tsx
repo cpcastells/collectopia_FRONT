@@ -8,6 +8,7 @@ import {
   LazyLoginPage,
 } from "../lazyComponents/lazyComponents";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
+import DetailPage from "../../pages/DetailPage/DetailPage";
 
 const routes: RouteObject[] = [
   {
@@ -39,7 +40,10 @@ const routes: RouteObject[] = [
           </Suspense>
         ),
       },
-
+      {
+        path: `${paths.details}${paths.id}`,
+        element: <DetailPage />,
+      },
       { path: paths.notFound, element: <NotFoundPage /> },
     ],
   },
