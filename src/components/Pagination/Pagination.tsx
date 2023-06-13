@@ -11,7 +11,7 @@ const Pagination = ({ onClick }: PaginationProps): React.ReactElement => {
       altText="load more button"
       height="89"
       width="121"
-      className="collection-load"
+      className="collection__load"
       onClick={onClick}
     />
   );
