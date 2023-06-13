@@ -3,6 +3,8 @@ import Button from "../Button/Button";
 import BoardgameCardStyled from "./BoardgameCardStyled";
 import peopleIcon from "../../assets/icons/people-icon.svg";
 import timeIcon from "../../assets/icons/time-icon.svg";
+import { Link } from "react-router-dom";
+import paths from "../../routers/paths";
 
 interface BoardgameCardProps {
   boardgame: BoardgameStructure;
@@ -62,7 +64,9 @@ const BoardgameCard = ({
         </div>
       </div>
       <div className="card__buttons-container">
-        <Button className={"card__details-button"} text={"Details"} />
+        <Link to={`${paths.details}/${id}`}>
+          <Button className={"card__details-button"} text={"Details"} />
+        </Link>
         <Button
           className={"card__delete-button"}
           text={"Delete"}
