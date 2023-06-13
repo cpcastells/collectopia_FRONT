@@ -101,7 +101,7 @@ export const PaginationHandlers = [
       ctx.status(200),
       ctx.json({
         boardgames: boardGamesMock,
-        totalBoardgames: 7,
+        totalBoardgames: 10,
       })
     );
   }),
