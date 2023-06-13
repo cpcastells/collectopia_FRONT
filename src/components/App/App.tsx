@@ -5,7 +5,6 @@ import { useAppDispatch } from "../../store";
 import { loginUserActionCreator } from "../../store/users/userSlice";
 import Layout from "../Layout/Layout";
 import { useNavigate } from "react-router-dom";
-import paths from "../../routers/paths";
 import { UserApiDataStructure } from "../../store/users/types";
 
 const App = (): React.ReactElement => {
@@ -24,9 +23,6 @@ const App = (): React.ReactElement => {
           token: storagedToken,
         } as UserApiDataStructure)
       );
-      navigate(paths.collection);
-    } else {
-      navigate(paths.login);
     }
   }, [decodeUserDataToken, dispatch, getLocalStorageItem, navigate]);
 
