@@ -60,6 +60,13 @@ const boardgameSlice = createSlice({
       ...currentBoardgameState,
       boardgame: action.payload,
     }),
+    updateTotalBoardgames: (
+      currentBoardgameState,
+      action: PayloadAction<number>
+    ): BoardgamesDataStructure => ({
+      ...currentBoardgameState,
+      totalBoardgames: action.payload,
+    }),
   },
 });
 
@@ -69,5 +76,6 @@ export const {
   addBoardgame: addBoardgameActionCreator,
   loadAdditionalStack: loadAdditionalStackActionCreator,
   loadBoardgameById: loadBoardgameByIdActionCreator,
+  updateTotalBoardgames: updateTotalBoardgamesActionCreator,
 } = boardgameSlice.actions;
 export const boardgamesReducer = boardgameSlice.reducer;
