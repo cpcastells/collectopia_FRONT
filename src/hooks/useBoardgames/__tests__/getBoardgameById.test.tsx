@@ -9,11 +9,12 @@ import { errorFeedback } from "../../modalData";
 import { store } from "../../../store";
 import { act } from "react-dom/test-utils";
 import { showModalActionCreator } from "../../../store/ui/uiSlice";
+import { loadBoardgameByIdActionCreator } from "../../../store/boardgames/boardgameSlice";
 
 describe("Given a getBoardgameById function", () => {
   describe("When it is called with a boardgame ID", () => {
-    test("Then it should return a boardgame with that ID", async () => {
-      const expectedBoardgame = boardGamesMock[0];
+    test("Then it should dispatch the boardgame to the state", async () => {
+      const dispatch = vi.spyOn(store, "dispatch");
 
       const {
         result: {
@@ -21,9 +22,13 @@ describe("Given a getBoardgameById function", () => {
         },
       } = renderHook(() => useBoardgames(), { wrapper: wrapper });
 
-      const boardgame = await getBoardgameById(boardGamesMock[0].id);
+      await act(async () => {
+        await getBoardgameById(boardGamesMock[0].id);
+      });
 
-      expect(boardgame).toStrictEqual(expectedBoardgame);
+      expect(dispatch).toHaveBeenCalledWith(
+        loadBoardgameByIdActionCreator(boardGamesMock[0])
+      );
     });
   });
 

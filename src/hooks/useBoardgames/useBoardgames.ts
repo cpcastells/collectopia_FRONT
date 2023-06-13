@@ -5,7 +5,6 @@ import {
   BoardgameApiResponse,
   BoardgameBaseStructure,
   BoardgameResponse,
-  BoardgameStructure,
 } from "../../store/boardgames/types";
 import { useAppDispatch, useAppSelector } from "../../store";
 import {
@@ -14,6 +13,7 @@ import {
   showModalActionCreator,
 } from "../../store/ui/uiSlice";
 import { errorFeedback, successFeedback } from "../modalData";
+import { loadBoardgameByIdActionCreator } from "../../store/boardgames/boardgameSlice";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -48,11 +48,11 @@ const useBoardgames = () => {
     [dispatch, stack, token]
   );
 
-  const deleteBoardgame = async (boargameId: string) => {
+  const deleteBoardgame = async (boardgameId: string) => {
     try {
       dispatch(showLoadingActionCreator());
 
-      await axios.delete(`${apiUrl}${paths.boardgames}/${boargameId}`, {
+      await axios.delete(`${apiUrl}${paths.boardgames}/${boardgameId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -91,28 +91,31 @@ const useBoardgames = () => {
     }
   };
 
-  const getBoardgameById = async (
-    boardgameId: string
-  ): Promise<BoardgameStructure | undefined> => {
-    try {
-      dispatch(showLoadingActionCreator());
+  const getBoardgameById = useCallback(
+    async (boardgameId: string) => {
+      try {
+        dispatch(showLoadingActionCreator());
 
-      const {
-        data: { boardgame },
-      } = await axios.get<BoardgameResponse>(
-        `${apiUrl}${paths.boardgames}/${boardgameId}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+        const {
+          data: { boardgame },
+        } = await axios.get<BoardgameResponse>(
+          `${apiUrl}${paths.boardgames}/${boardgameId}`,
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
 
-      return boardgame;
-    } catch (error) {
-      dispatch(hideLoadingActionCreator());
+        dispatch(loadBoardgameByIdActionCreator(boardgame));
 
-      dispatch(showModalActionCreator(errorFeedback.loadBoardgames));
-    }
-  };
+        dispatch(hideLoadingActionCreator());
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
+
+        dispatch(showModalActionCreator(errorFeedback.loadBoardgames));
+      }
+    },
+    [dispatch, token]
+  );
 
   return { getBoardgames, deleteBoardgame, addBoardgame, getBoardgameById };
 };
