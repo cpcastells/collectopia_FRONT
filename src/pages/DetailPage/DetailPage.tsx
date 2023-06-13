@@ -73,8 +73,14 @@ const DetailPage = (): React.ReactElement => {
           <p className="detail__description">{boardgame.briefDescription}</p>
         </div>
         <div className="detail__button-container">
-          <Button text="Modify" className="detail__button--modify" />
-          <Button text="Delete" className="detail__button--delete" />
+          <Button
+            text="Modify"
+            className="detail__button detail__button--modify"
+          />
+          <Button
+            text="Delete"
+            className="detail__button detail__button--delete"
+          />
         </div>
       </article>
     </DetailPageStyled>

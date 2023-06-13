@@ -36,6 +36,7 @@ export const GlobalStyle = createGlobalStyle`
 
   img {
     max-width: 100%;
+    height: auto;
   }
 
   ul{
@@ -61,4 +62,5 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     font: inherit;
   }
+
 `;
