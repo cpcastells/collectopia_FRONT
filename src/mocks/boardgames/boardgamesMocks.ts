@@ -140,6 +140,26 @@ export const newBoardgameMock: BoardgameStructure = {
   id: "6478dd2fe3e61710d8baa04d",
 };
 
+export const partialBoardgameMock: BoardgameStructure = {
+  players: {
+    min: 3,
+    max: 0,
+  },
+  title: "Rising Sun",
+  author: "",
+  price: 0,
+  releaseYear: 0,
+  image:
+    "https://media.discordapp.net/attachments/1114204200885301331/1114204323862286496/Rising_sun.webp?width=662&height=662",
+  category: "War game",
+  mechanics: "Negotiation",
+  duration: 120,
+  briefDescription:
+    "Rising Sun is a game about honor, negotiation, and warfare in a feudal Japan where the ancient gods (kami) have returned.",
+  user: "646f7e585189305e28a57d55",
+  id: "6478dd2fe3e61710d8baa04c",
+};
+
 export const apiResponseMock: BoardgameApiResponse = {
   boardgames: boardGamesMock,
   totalBoardgames: boardGamesMock.length,
