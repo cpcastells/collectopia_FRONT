@@ -1,13 +1,10 @@
 import useBoardgames from "../../hooks/useBoardgames/useBoardgames";
 import { useAppDispatch } from "../../store";
+import { updateTotalBoardgamesActionCreator } from "../../store/boardgames/boardgameSlice";
 import { addFilterActionCreator } from "../../store/ui/uiSlice";
 import FilterStyled from "./FilterStyled";
 
-interface FilterProps {
-  setTotalBoardgames: (totalBoardgames: number) => void;
-}
-
-const Filter = ({ setTotalBoardgames }: FilterProps): React.ReactElement => {
+const Filter = (): React.ReactElement => {
   const dispatch = useAppDispatch();
   const { getBoardgames } = useBoardgames();
 
@@ -21,7 +18,7 @@ const Filter = ({ setTotalBoardgames }: FilterProps): React.ReactElement => {
     if (response) {
       const { totalBoardgames } = response;
 
-      setTotalBoardgames(totalBoardgames);
+      dispatch(updateTotalBoardgamesActionCreator(totalBoardgames));
     }
   };
 
