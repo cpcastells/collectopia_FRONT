@@ -4,6 +4,7 @@ import { BoardgameStructure, BoardgamesDataStructure } from "./types";
 export const initialBoardgamesState: BoardgamesDataStructure = {
   boardgames: [],
   stack: 5,
+  totalBoardgames: 0,
   boardgame: {
     players: {
       min: 0,
