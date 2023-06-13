@@ -15,3 +15,7 @@ export const LazyAddBoardgamePage = lazy(
 export const LazyDetailPage = lazy(
   () => import("../../pages/DetailPage/DetailPage")
 );
+
+export const LazyNotFoundPage = lazy(
+  () => import("../../pages/NotFoundPage/NotFoundPage")
+);
