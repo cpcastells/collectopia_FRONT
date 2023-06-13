@@ -15,11 +15,11 @@ const Layout = (): React.ReactElement => {
 
   return (
     <ContainerStyled>
-      {location.pathname !== `${paths.login}` && <Header />}
-      <Outlet />
       {isLoading && <Loader />}
       {isSuccess && <Feedback />}
       {isError && <Feedback />}
+      {location.pathname !== `${paths.login}` && <Header />}
+      <Outlet />
     </ContainerStyled>
   );
 };

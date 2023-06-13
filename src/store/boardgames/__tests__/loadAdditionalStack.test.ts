@@ -13,6 +13,7 @@ describe("Given a loadAdditionalStack reducer", () => {
         boardgames: [],
         stack: 10,
         boardgame: initialBoardgamesState.boardgame,
+        totalBoardgames: 0,
       };
 
       const newState = boardgamesReducer(
