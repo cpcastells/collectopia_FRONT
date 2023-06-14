@@ -30,13 +30,14 @@ const BoardgameCard = ({
         <h3 className="card__title">{title}</h3>
         <span className="card__category">{category}</span>
       </div>
-      <div className="card__image">
+      <div className="card__image-container">
         <img
           src={image}
           alt={title}
           width={274}
           height={274}
           loading={isLazy}
+          className="card__image"
         ></img>
       </div>
       <div className="card__info">
