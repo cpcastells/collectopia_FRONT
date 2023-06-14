@@ -1,18 +1,28 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import useBoardgames from "../../hooks/useBoardgames/useBoardgames";
-import { useAppSelector } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import DetailPageStyled from "./DetailPageStyled";
 import Button from "../../components/Button/Button";
+import { removeBoardgameActionCreator } from "../../store/boardgames/boardgameSlice";
+import paths from "../../routers/paths";
 
 const DetailPage = (): React.ReactElement => {
-  const { getBoardgameById } = useBoardgames();
+  const { getBoardgameById, deleteBoardgame } = useBoardgames();
+  const dispatch = useAppDispatch();
   const { boardgame } = useAppSelector((state) => state.boardgameStore);
   const { boardgameId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getBoardgameById(boardgameId as string);
   }, [boardgameId, getBoardgameById]);
+
+  const handleOnDelete = async (): Promise<void> => {
+    await deleteBoardgame(boardgame.id);
+    dispatch(removeBoardgameActionCreator(boardgame.id));
+    navigate(paths.collection);
+  };
 
   return (
     <DetailPageStyled>
@@ -80,6 +90,7 @@ const DetailPage = (): React.ReactElement => {
           <Button
             text="Delete"
             className="detail__button detail__button--delete"
+            onClick={handleOnDelete}
           />
         </div>
       </article>
