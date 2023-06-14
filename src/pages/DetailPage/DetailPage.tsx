@@ -16,15 +16,6 @@ const DetailPage = (): React.ReactElement => {
 
   useEffect(() => {
     getBoardgameById(boardgameId as string);
-
-    const preconnectElement = document.createElement("link");
-    preconnectElement.rel = "preload";
-    preconnectElement.as = "image";
-    preconnectElement.href = boardgame.image;
-
-    const parent = document.head;
-    const firstChild = document.head.firstChild;
-    parent.insertBefore(preconnectElement, firstChild);
   }, [boardgame.image, boardgameId, getBoardgameById]);
 
   const handleOnDelete = async (): Promise<void> => {

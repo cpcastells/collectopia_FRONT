@@ -65,6 +65,10 @@ const BoardgameFormStyled = styled.form`
       font-size: 1.125rem;
       color: ${(props) => props.theme.colors["light-green"]};
       margin: 20px 0 40px 0;
+
+      &:disabled {
+        background: ${(props) => props.theme.colors["medium-green"]};
+      }
     }
   }
 `;
