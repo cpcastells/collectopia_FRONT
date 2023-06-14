@@ -1,10 +1,19 @@
 import { screen } from "@testing-library/react";
-import { renderWithProviders } from "../../utils/testUtils";
+import userEvent from "@testing-library/user-event";
+import {
+  renderWithProviders,
+  renderWithProvidersWithoutRouter,
+} from "../../utils/testUtils";
 import DetailPage from "./DetailPage";
 import {
   boardGamesMock,
   partialBoardgameMock,
 } from "../../mocks/boardgames/boardgamesMocks";
+import { store } from "../../store";
+import { successFeedback } from "../../hooks/modalData";
+import CollectionPage from "../CollectionPage/CollectionPage";
+import paths from "../../routers/paths";
+import { RouterProvider, createMemoryRouter } from "react-router-dom";
 
 describe("Given a DetailPage ID", () => {
   describe("When it is rendered with the id of Rising Sun", () => {
@@ -27,7 +36,7 @@ describe("Given a DetailPage ID", () => {
   });
 
   describe("When it is rendered with a boardgame ", () => {
-    test("Then it should show a button delete and a button modify ", () => {
+    test("Then it should show a button with the text 'Delete'  and a button with the text 'Modify' ", () => {
       const expectedEditButtonText = "Modify";
       const expectedDeleteButtonText = "Delete";
 
@@ -49,6 +58,31 @@ describe("Given a DetailPage ID", () => {
 
       expect(editButton).toBeInTheDocument();
       expect(DeleteButton).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user clicks on the delete button", () => {
+    test("Then is should show a feedback", async () => {
+      const deleteButtonText = "Delete";
+
+      const routes = [
+        { path: paths.root, element: <DetailPage /> },
+        { path: paths.collection, element: <CollectionPage /> },
+      ];
+
+      const router = createMemoryRouter(routes);
+
+      renderWithProvidersWithoutRouter(<RouterProvider router={router} />);
+
+      const deleteButton = screen.getByRole("button", {
+        name: deleteButtonText,
+      });
+
+      await userEvent.click(deleteButton);
+
+      const message = store.getState().uiStore.modalData.title;
+
+      expect(message).toBe(successFeedback.delete.title);
     });
   });
 });

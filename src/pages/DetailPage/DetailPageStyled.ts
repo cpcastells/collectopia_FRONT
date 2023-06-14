@@ -42,6 +42,7 @@ const DetailPageStyled = styled.div`
 
     &__image {
       border-radius: 15px;
+      object-fit: cover;
     }
 
     &__secondary-container {

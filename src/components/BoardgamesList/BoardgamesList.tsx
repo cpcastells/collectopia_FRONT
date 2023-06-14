@@ -33,6 +33,7 @@ const BoardgamesList = ({
       dispatch(loadBoardgamesActionCreator(boardgames));
     }
   };
+
   return (
     <BoardgamesListStyled>
       {boardgames.map((boardgame, index) => (
