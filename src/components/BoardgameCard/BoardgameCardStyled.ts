@@ -16,8 +16,9 @@ const BoardgameCardStyled = styled.article`
     &__header {
       display: flex;
       flex-direction: column;
+      width: 100%;
       gap: 5px;
-      padding-top: 12px;
+      padding: 12px 12px 0 12px;
       text-align: center;
     }
 
@@ -35,6 +36,7 @@ const BoardgameCardStyled = styled.article`
       display: flex;
       align-items: center;
       width: 100%;
+      padding-bottom: 7px;
     }
 
     &__playtime {
