@@ -1,8 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import useLocalStorage from "../../hooks/useLocalStorage/useLocalStorage";
 import { useAppDispatch } from "../../store";
 import { logoutUserActionCreator } from "../../store/users/userSlice";
-import { NavLink } from "react-router-dom";
 import NavbarStyled from "./NavbarStyled";
 import paths from "../../routers/paths";
 import newIcon from "../../assets/icons/new-icon.svg";

@@ -5,6 +5,7 @@ import {
   BoardgameApiResponse,
   BoardgameBaseStructure,
   BoardgameResponse,
+  BoardgameStructure,
 } from "../../store/boardgames/types";
 import { useAppDispatch, useAppSelector } from "../../store";
 import {
@@ -48,7 +49,7 @@ const useBoardgames = () => {
     [dispatch, stack, token]
   );
 
-  const deleteBoardgame = async (boardgameId: string) => {
+  const deleteBoardgame = async (boardgameId: string): Promise<void> => {
     try {
       dispatch(showLoadingActionCreator());
 
@@ -117,7 +118,35 @@ const useBoardgames = () => {
     [dispatch, token]
   );
 
-  return { getBoardgames, deleteBoardgame, addBoardgame, getBoardgameById };
+  const updateBoardgame = async (
+    boardgame: BoardgameStructure
+  ): Promise<void> => {
+    try {
+      dispatch(showLoadingActionCreator());
+
+      await axios.put(
+        `${apiUrl}${paths.boardgames}/${paths.updateEndpoint}`,
+        boardgame,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(showModalActionCreator(successFeedback.edit));
+    } catch (error) {
+      dispatch(hideLoadingActionCreator());
+
+      dispatch(showModalActionCreator(errorFeedback.edit));
+    }
+  };
+
+  return {
+    getBoardgames,
+    deleteBoardgame,
+    addBoardgame,
+    getBoardgameById,
+    updateBoardgame,
+  };
 };
 
 export default useBoardgames;
