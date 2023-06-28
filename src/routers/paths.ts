@@ -9,6 +9,7 @@ const paths = {
   loginEndpoint: "user/login",
   createEndpoint: "boardgames/create",
   id: "/:boardgameId",
+  updateEndpoint: "update",
 };
 
 export default paths;

@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "../Button/Button";
 import BoardgameFormStyled from "./BoardgameFormStyled";
 import { BoardgameBaseStructure } from "../../store/boardgames/types";
