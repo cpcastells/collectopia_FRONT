@@ -34,6 +34,18 @@ export const handlers = [
     );
   }),
 
+  rest.put(
+    `${apiUrl}${paths.boardgames}/${paths.updateEndpoint}`,
+    (_req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          message: "Boardgame was succesfully updated",
+        })
+      );
+    }
+  ),
+
   rest.post(`${apiUrl}${paths.createEndpoint}`, (_req, res, ctx) => {
     return res(
       ctx.status(201),
@@ -84,6 +96,18 @@ export const errorHandlers = [
       })
     );
   }),
+
+  rest.put(
+    `${apiUrl}${paths.boardgames}/${paths.updateEndpoint}`,
+    (_req, res, ctx) => {
+      return res(
+        ctx.status(500),
+        ctx.json({
+          message: "Error with the server",
+        })
+      );
+    }
+  ),
 
   rest.get(`${apiUrl}${paths.boardgames}/*`, (_req, res, ctx) => {
     return res(
