@@ -3,7 +3,7 @@ import BoardgameForm from "../../components/BoardgameForm/BoardgameForm";
 import useBoardgames from "../../hooks/useBoardgames/useBoardgames";
 import { useAppDispatch } from "../../store";
 import { addBoardgameActionCreator } from "../../store/boardgames/boardgameSlice";
-import { BoardgameBaseStructure } from "../../store/boardgames/types";
+import { BoardgameStructure } from "../../store/boardgames/types";
 import AddBoardgamePageStyled from "./AddBoardgamePageStyled";
 import paths from "../../routers/paths";
 import { resetFilterActionCreator } from "../../store/ui/uiSlice";
@@ -13,7 +13,9 @@ const AddBoardgamePage = (): React.ReactElement => {
   const { addBoardgame } = useBoardgames();
   const navigate = useNavigate();
 
-  const submitBoardgameForm = async (boardgame: BoardgameBaseStructure) => {
+  const submitBoardgameForm = async (
+    boardgame: Partial<BoardgameStructure>
+  ) => {
     const newBoardgame = await addBoardgame(boardgame);
 
     if (newBoardgame) {
@@ -26,7 +28,7 @@ const AddBoardgamePage = (): React.ReactElement => {
   return (
     <AddBoardgamePageStyled>
       <h2 className="add-title">add</h2>
-      <span className="add-subtitle">bordgame!</span>
+      <span className="add-subtitle">boardgame!</span>
       <BoardgameForm submitBoardgameForm={submitBoardgameForm} />
     </AddBoardgamePageStyled>
   );

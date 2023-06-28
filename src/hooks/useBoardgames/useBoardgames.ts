@@ -3,7 +3,6 @@ import { useCallback } from "react";
 import paths from "../../routers/paths";
 import {
   BoardgameApiResponse,
-  BoardgameBaseStructure,
   BoardgameResponse,
   BoardgameStructure,
 } from "../../store/boardgames/types";
@@ -68,7 +67,7 @@ const useBoardgames = () => {
   };
 
   const addBoardgame = async (
-    boardgame: BoardgameBaseStructure
+    boardgame: Partial<BoardgameStructure>
   ): Promise<BoardgameResponse | undefined> => {
     try {
       dispatch(showLoadingActionCreator());
