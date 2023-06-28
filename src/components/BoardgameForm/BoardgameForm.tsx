@@ -1,29 +1,36 @@
 import React, { useState } from "react";
 import Button from "../Button/Button";
 import BoardgameFormStyled from "./BoardgameFormStyled";
-import { BoardgameBaseStructure } from "../../store/boardgames/types";
+import {
+  BoardgameBaseStructure,
+  BoardgameStructure,
+} from "../../store/boardgames/types";
 
 interface BoardgameFormProps {
-  submitBoardgameForm: (boardgame: BoardgameBaseStructure) => Promise<void>;
+  submitBoardgameForm: (
+    boardgame: BoardgameStructure | Partial<BoardgameStructure>
+  ) => Promise<void>;
+  boardgame?: BoardgameStructure;
 }
 
 const BoardgameForm = ({
   submitBoardgameForm,
+  boardgame,
 }: BoardgameFormProps): React.ReactElement => {
   const initialBoardgame: BoardgameBaseStructure = {
-    title: "",
-    duration: 0,
+    title: boardgame ? boardgame.title : "",
+    duration: boardgame ? boardgame.duration : 0,
     players: {
-      min: 0,
-      max: 0,
+      min: boardgame ? boardgame.players.min : 0,
+      max: boardgame ? boardgame.players.max : 0,
     },
-    category: "",
-    mechanics: "",
-    image: "",
-    releaseYear: 0,
-    author: "",
-    price: 0,
-    briefDescription: "",
+    category: boardgame ? boardgame.category : "",
+    mechanics: boardgame ? boardgame.mechanics : "",
+    image: boardgame ? boardgame.image : "",
+    releaseYear: boardgame ? boardgame.releaseYear : 0,
+    author: boardgame ? boardgame.author : "",
+    price: boardgame ? boardgame.price : 0,
+    briefDescription: boardgame ? boardgame.briefDescription : "",
   };
 
   const [newBoardgame, setNewBoardgame] =
@@ -54,7 +61,16 @@ const BoardgameForm = ({
 
   const handleOnSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
-    submitBoardgameForm(newBoardgame);
+    if (!boardgame) {
+      submitBoardgameForm(newBoardgame);
+      return;
+    }
+
+    submitBoardgameForm({
+      ...newBoardgame,
+      id: boardgame?.id,
+      user: boardgame?.user,
+    });
   };
 
   const isDisabled =
@@ -113,6 +129,7 @@ const BoardgameForm = ({
           id="category"
           className="form__select"
           onChange={handleOnChange}
+          value={newBoardgame.category}
         >
           <option value="">--Select--</option>
           <option value="Eurogame">Eurogame</option>
@@ -132,6 +149,7 @@ const BoardgameForm = ({
           id="mechanics"
           className="form__select"
           onChange={handleOnChange}
+          value={newBoardgame.mechanics}
         >
           <option value="">--Select--</option>
           <option value="Hand Management">Hand Management</option>
@@ -188,10 +206,14 @@ const BoardgameForm = ({
       </div>
       <div className="form__control-form">
         <label htmlFor="briefDescription">Description:</label>
-        <textarea id="briefDescription" onChange={handleOnChange} />
+        <textarea
+          id="briefDescription"
+          onChange={handleOnChange}
+          value={newBoardgame.briefDescription}
+        />
       </div>
       <Button
-        text="Add"
+        text={boardgame ? "Modify" : "Add"}
         className="form__button"
         isDisabled={isDisabled}
         onClick={() => handleOnSubmit}

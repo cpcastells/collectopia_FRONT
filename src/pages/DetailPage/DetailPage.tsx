@@ -24,6 +24,10 @@ const DetailPage = (): React.ReactElement => {
     navigate(paths.collection);
   };
 
+  const handleOnModify = () => {
+    navigate(paths.modifyBoardgame);
+  };
+
   return (
     <DetailPageStyled>
       <article className="detail">
@@ -86,6 +90,7 @@ const DetailPage = (): React.ReactElement => {
           <Button
             text="Modify"
             className="detail__button detail__button--modify"
+            onClick={handleOnModify}
           />
           <Button
             text="Delete"

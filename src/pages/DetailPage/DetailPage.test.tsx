@@ -14,6 +14,7 @@ import { successFeedback } from "../../hooks/modalData";
 import CollectionPage from "../CollectionPage/CollectionPage";
 import paths from "../../routers/paths";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
+import UpdateBoardgamePage from "../UpdateBoardgamePage/UpdateBoardgamePage";
 
 describe("Given a DetailPage ID", () => {
   describe("When it is rendered with the id of Rising Sun", () => {
@@ -83,6 +84,30 @@ describe("Given a DetailPage ID", () => {
       const message = store.getState().uiStore.modalData.title;
 
       expect(message).toBe(successFeedback.delete.title);
+    });
+  });
+
+  describe("When the user clicks on the modify button", () => {
+    test("Then it should redirect to the UpdateBoardgamePage", async () => {
+      const buttonText = "Modify";
+      const expectedText = "modify";
+
+      const routes = [
+        { path: paths.root, element: <DetailPage /> },
+        { path: paths.modifyBoardgame, element: <UpdateBoardgamePage /> },
+      ];
+
+      const testRouter = createMemoryRouter(routes);
+
+      renderWithProvidersWithoutRouter(<RouterProvider router={testRouter} />);
+
+      const button = screen.getByRole("button", { name: buttonText });
+
+      await userEvent.click(button);
+
+      const heading = screen.getByRole("heading", { name: expectedText });
+
+      expect(heading).toBeInTheDocument();
     });
   });
 });

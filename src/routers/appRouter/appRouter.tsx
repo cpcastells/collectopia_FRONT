@@ -8,6 +8,7 @@ import {
   LazyDetailPage,
   LazyLoginPage,
   LazyNotFoundPage,
+  LazyUpdateBoardgamePage,
 } from "../lazyComponents/lazyComponents";
 
 const routes: RouteObject[] = [
@@ -45,6 +46,14 @@ const routes: RouteObject[] = [
         element: (
           <Suspense>
             <LazyDetailPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: paths.modifyBoardgame,
+        element: (
+          <Suspense>
+            <LazyUpdateBoardgamePage />
           </Suspense>
         ),
       },

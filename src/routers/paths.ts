@@ -5,6 +5,7 @@ const paths = {
   collection: "/collection",
   details: "/detail",
   addBoardgame: "/add-boardgame",
+  modifyBoardgame: "/modify-boardgame",
   boardgames: "boardgames",
   loginEndpoint: "user/login",
   createEndpoint: "boardgames/create",
