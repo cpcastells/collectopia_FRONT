@@ -5,7 +5,7 @@ const ContainerStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 450px;
+  width: 100vw;
   margin: 0 auto;
 `;
 

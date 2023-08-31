@@ -15,6 +15,10 @@ const NavbarStyled = styled.nav`
   .active {
     border-bottom: 3px solid;
   }
+
+  @media (min-width: 600px) {
+    width: 600px;
+  }
 `;
 
 export default NavbarStyled;
