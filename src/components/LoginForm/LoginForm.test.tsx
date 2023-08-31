@@ -39,12 +39,13 @@ describe("Given a LoginForm component", () => {
     });
   });
 
-  describe("When the user types 'Jonny' in the username field", () => {
+  describe("When the user types 'Jonny' in the username field and the password field is empty", () => {
     test("Then it should show the typed text", async () => {
       renderWithProviders(<LoginForm submitForm={submitFormMock} />);
 
       const userNameField = screen.getByLabelText(expectedUsernameLabelText);
 
+      userEvent.clear(userNameField);
       await userEvent.type(userNameField, typedName);
 
       expect(userNameField).toHaveValue(typedName);
@@ -53,18 +54,21 @@ describe("Given a LoginForm component", () => {
     test("Then the Log In button should be disabled", () => {
       renderWithProviders(<LoginForm submitForm={submitFormMock} />);
 
+      const passwordField = screen.getByLabelText(expectedPasswordLabelText);
+      userEvent.clear(passwordField);
       const loginButton = screen.getByRole("button", { name: /log in/i });
 
       expect(loginButton).toBeDisabled();
     });
   });
 
-  describe("When the user types 'holacaracola' in the password field", () => {
+  describe("When the user types 'holacaracola' in the password field and the username field is empty", () => {
     test("Then it should show the typed text", async () => {
       renderWithProviders(<LoginForm submitForm={submitFormMock} />);
 
       const passwordField = screen.getByLabelText(expectedPasswordLabelText);
 
+      userEvent.clear(passwordField);
       await userEvent.type(passwordField, typedPassword);
 
       expect(passwordField).toHaveValue(typedPassword);
@@ -73,6 +77,8 @@ describe("Given a LoginForm component", () => {
     test("Then the Log in button should be disabled", () => {
       renderWithProviders(<LoginForm submitForm={submitFormMock} />);
 
+      const userNameField = screen.getByLabelText(expectedUsernameLabelText);
+      userEvent.clear(userNameField);
       const loginButton = screen.getByRole("button", { name: /log in/i });
 
       expect(loginButton).toBeDisabled();
