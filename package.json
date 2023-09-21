@@ -14,7 +14,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@fontsource/jost": "^5.0.1",
+    "@fontsource/jost": "^5.0.8",
     "@fontsource/luckiest-guy": "^5.0.1",
     "@fontsource/nunito": "^5.0.1",
     "@fontsource/poppins": "^5.0.1",
