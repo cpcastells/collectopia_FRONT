@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@fontsource/jost": "^5.0.1",
-    "@fontsource/luckiest-guy": "^5.0.1",
+    "@fontsource/luckiest-guy": "^5.0.11",
     "@fontsource/nunito": "^5.0.1",
     "@fontsource/poppins": "^5.0.1",
     "@reduxjs/toolkit": "^1.9.5",
